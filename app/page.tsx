@@ -1,32 +1,25 @@
-import Navbar from "./components/Navbar";
+
 import Hero from "./components/Hero";
-import About from "./components/About";
-import Hush from "./components/Hush";
-import Descriptions from "./components/Descriptions";
-import Cultural from "./components/Cultural";
+import Narrative from "./components/Narrative";
 import Event from './components/Event';
-import Book from "./components/Book";
+import Subscribe from "./components/Subscribe";
+import Social from "./components/Social";
+import AuthorSection from "./components/AuthorSection";
 import Illuminate from "./components/Illuminate";
-import Box from "./components/Box";
 import Unity from "./components/Unity";
-import Notes from "./components/Notes";
 import Footer from "./components/Footer";
 
 export default function Home() {
   return (
     <>
-      <Navbar />
       <Hero />
-      <About />
-      <Hush />
-      <Descriptions />
-      <Cultural />
+      <Narrative />
       <Event />
-      <Book />
-      <Illuminate />
-      <Box />
+      <Subscribe />
+      <Social />
+      <AuthorSection />
       <Unity />
-      <Notes />
+      <Illuminate />
       <Footer />
     </>
   );

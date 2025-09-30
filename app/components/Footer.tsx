@@ -13,7 +13,7 @@ import {
   Facebook,
 } from "lucide-react";
 
-const brownBeige = "#A77C57";
+const navyBlue = "#0a1a4f";
 
 export default function Footer() {
   return (
@@ -21,24 +21,24 @@ export default function Footer() {
       <div className="max-w-7xl mx-auto px-6 py-16 grid grid-cols-1 md:grid-cols-4 gap-10 text-center md:text-left">
         {/* Left Section */}
         <div className="space-y-4">
-          <h2 className="text-2xl font-bold text-[#A77C57] relative inline-block group">
+          <h2 className="text-2xl font-bold text-[#0a1a4f] relative inline-block group">
             Re-rooted. Remembered. Reassembled.
-            <span className="block h-0.5 bg-[#A77C57] max-w-0 group-hover:max-w-full transition-all duration-300 mt-1"></span>
+            <span className="block h-0.5 bg-[#0a1a4f] max-w-0 group-hover:max-w-full transition-all duration-300 mt-1"></span>
           </h2>
-          <p className="text-black leading-relaxed">
+          <p className="text-black leading-relaxed group hover:underline hover:decoration-[#0a1a4f] hover:underline-offset-4">
             A People Dispersed. A Culture Reassembled. A Story Returned in Three
             Volumes. Reach Us Directly.
           </p>
-          <p className="text-black italic">
+          <p className="text-black italic group hover:underline hover:decoration-[#0a1a4f] hover:underline-offset-4">
             Let this be the beginning of the conversation, not the end.
           </p>
         </div>
 
         {/* Contact */}
         <div className="space-y-3">
-          <h3 className="text-xl font-semibold text-[#A77C57] relative group inline-block">
+          <h3 className="text-xl font-semibold text-[#0a1a4f] relative group inline-block">
             Contact
-            <span className="block h-0.5 bg-[#A77C57] max-w-0 group-hover:max-w-full transition-all duration-300 mt-1"></span>
+            <span className="block h-0.5 bg-[#0a1a4f] max-w-0 group-hover:max-w-full transition-all duration-300 mt-1"></span>
           </h3>
           <FooterLink icon={<Phone size={18} />} text="(469) 618-8840" />
           <FooterLink icon={<MessageSquare size={18} />} text="Send a Message" />
@@ -49,9 +49,9 @@ export default function Footer() {
 
         {/* Discover */}
         <div className="space-y-3">
-          <h3 className="text-xl font-semibold text-[#A77C57] relative group inline-block">
+          <h3 className="text-xl font-semibold text-[#0a1a4f] relative group inline-block">
             Discover
-            <span className="block h-0.5 bg-[#A77C57] max-w-0 group-hover:max-w-full transition-all duration-300 mt-1"></span>
+            <span className="block h-0.5 bg-[#0a1a4f] max-w-0 group-hover:max-w-full transition-all duration-300 mt-1"></span>
           </h3>
           <FooterLink icon={<BookOpen size={18} />} text="Cultural Education" />
           <FooterLink icon={<Compass size={18} />} text="Heritage Journeys" />
@@ -61,9 +61,9 @@ export default function Footer() {
 
         {/* Explore */}
         <div className="space-y-3">
-          <h3 className="text-xl font-semibold text-[#A77C57] relative group inline-block">
+          <h3 className="text-xl font-semibold text-[#0a1a4f] relative group inline-block">
             Explore
-            <span className="block h-0.5 bg-[#A77C57] max-w-0 group-hover:max-w-full transition-all duration-300 mt-1"></span>
+            <span className="block h-0.5 bg-[#0a1a4f] max-w-0 group-hover:max-w-full transition-all duration-300 mt-1"></span>
           </h3>
           <FooterLink icon={<BookOpen size={18} />} text="The Book" />
           <FooterLink icon={<Map size={18} />} text="Events & Bookings" />
@@ -86,11 +86,10 @@ function FooterLink({
   icon: React.ReactNode;
   text: string;
 }) {
-  const brownBeige = "#A77C57";
   return (
     <a
       href="#"
-      className="flex items-center justify-center md:justify-start gap-2 text-black transition-colors duration-300 group hover:text-[#A77C57]"
+      className="flex items-center justify-center md:justify-start gap-2 text-black transition-all duration-300 group hover:text-[#0a1a4f] hover:underline hover:decoration-[#0a1a4f] hover:underline-offset-4"
     >
       <span className="transition-transform duration-300 group-hover:scale-110">
         {icon}

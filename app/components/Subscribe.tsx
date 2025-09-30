@@ -2,13 +2,10 @@
 
 import { motion } from "framer-motion";
 
-export default function Illuminate() {
+export default function Subscribe() {
   return (
-    <section
-      className="relative h-[70vh] w-full flex items-center justify-center text-center overflow-hidden
-                 bg-gradient-to-b from-[#b89a65] to-white"
-    >
-      {/* Star field */}
+    <section className="relative h-[70vh] w-full flex items-center justify-center text-center overflow-hidden bg-gradient-to-b from-[#0a1a4f] to-[#ffffff]">
+      {/* Animated star-like particles */}
       <div className="absolute inset-0">
         {[...Array(40)].map((_, i) => (
           <motion.span
@@ -31,6 +28,8 @@ export default function Illuminate() {
             }}
           />
         ))}
+
+        {/* Larger floating glows for depth */}
         {[...Array(3)].map((_, i) => (
           <motion.span
             key={`big-${i}`}
@@ -63,47 +62,36 @@ export default function Illuminate() {
           whileInView={{ opacity: 1, y: 0 }}
           transition={{ duration: 1, ease: "easeOut" }}
           viewport={{ once: true }}
-          className="text-3xl md:text-5xl font-serif font-bold text-white"
+          className="text-3xl md:text-4xl font-serif font-bold text-white"
         >
-          Reader Invitation
+          Keep the hush alive. Walk the rhythm forward.
         </motion.h2>
 
-        <motion.p
-          initial={{ opacity: 0, y: 20 }}
+        <motion.form
+          initial={{ opacity: 0, y: 30 }}
           whileInView={{ opacity: 1, y: 0 }}
-          transition={{ duration: 1.2, ease: "easeOut", delay: 0.3 }}
+          transition={{ duration: 1, ease: "easeOut", delay: 0.3 }}
           viewport={{ once: true }}
-          className="mt-6 text-lg md:text-xl text-white leading-relaxed"
+          className="mt-8 flex flex-col md:flex-row items-center justify-center gap-4"
         >
-          “This Saga is not just a book. It is a summons. Read it as testimony,
-          as inheritance, as covenant.”
-        </motion.p>
-
-        {/* CTA Buttons */}
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          transition={{ duration: 1.2, ease: "easeOut", delay: 0.6 }}
-          viewport={{ once: true }}
-          className="mt-10 space-y-6"
-        >
-          {/* First row: Subscribe + Download Sample */}
-          <div className="flex flex-col sm:flex-row justify-center gap-4">
-            <button className="px-6 py-3 border-2 border-[#C9A74C] text-black rounded-full font-medium hover:bg-[#C9A74C]/20 transition">
-              Subscribe for Bonus Features
-            </button>
-            <button className="px-6 py-3 border-2 border-[#C9A74C] text-black rounded-full font-medium hover:bg-[#C9A74C]/20 transition">
-              Download Sample Chapter
-            </button>
-          </div>
-          {/* Last row: Buy Now centered */}
-          <div>
-            <button className="px-6 py-3 border-2 border-[#C9A74C] text-black rounded-full font-medium hover:bg-[#C9A74C]/20 transition">
-              Buy Now
-            </button>
-          </div>
-        </motion.div>
+          <input
+            type="email"
+            placeholder="Enter your email"
+            className="w-72 px-4 py-3 rounded-full bg-white/20 text-white placeholder-white/70
+                       border-2 border-[#0a1a4f] outline-none focus:ring-0"
+          />
+          <button
+            type="submit"
+            className="px-8 py-3 rounded-full bg-[#0a1a4f] text-white font-semibold
+                       hover:bg-[#061033] transition-colors duration-300"
+          >
+            Subscribe
+          </button>
+        </motion.form>
       </div>
+
+      {/* Bottom gradient overlay */}
+      <div className="absolute bottom-0 left-0 w-full h-24 bg-gradient-to-t from-white to-transparent pointer-events-none" />
     </section>
   );
 }
