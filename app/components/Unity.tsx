@@ -7,9 +7,9 @@ import { motion, AnimatePresence } from "framer-motion";
 const slides = [
   {
     img: "/unity1.png",
-    title: "Echoes of Ancestral Connections",
-    text: "Rediscover your roots through the Amadu Massally. Explore stories, embrace history, and reconnect with ancestral truth.",
-    button: "Explore Further",
+    title: "Join the Covenant",
+    text: "Step into a living covenant of remembrance, return, and reassembly. Be part of the journey that connects generations and diasporas.",
+    button: "Subscribe to Saga Speak",
   },
   {
     img: "/unity2.png",

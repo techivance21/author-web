@@ -116,6 +116,17 @@ export default function Event() {
             </motion.div>
           ))}
         </div>
+
+        {/* See All Events Button */}
+        <div className="text-center">
+          <motion.a
+            whileHover={{ scale: 1.05 }}
+            href="#all-events"
+            className="inline-block bg-[#C9A74C] text-white px-8 py-3 rounded-full font-semibold transition-colors duration-300 hover:bg-[#a7853c]"
+          >
+            See All Events
+          </motion.a>
+        </div>
       </div>
     </section>
   );

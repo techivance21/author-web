@@ -19,7 +19,7 @@ export default function Social() {
       </div>
 
       <div className="relative z-10 max-w-7xl mx-auto px-6 space-y-20">
-        {/* Intro Heading + Subtext (no button here now) */}
+        {/* Intro Heading + Subtext */}
         <motion.div
           initial={{ opacity: 0, y: 30 }}
           whileInView={{ opacity: 1, y: 0 }}
@@ -64,6 +64,35 @@ export default function Social() {
           </div>
         </motion.div>
 
+        {/* Amadu Massally Bio */}
+        <motion.div
+          initial={{ opacity: 0, y: 40 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.8, delay: 0.1 }}
+          className="max-w-4xl mx-auto text-center space-y-6"
+        >
+          <h3 className="text-3xl font-bold">Amadu Massally</h3>
+          <p className="text-lg md:text-xl italic text-white">
+            “Repairer of the breach, connector of diasporas.”
+          </p>
+          <p className="text-base md:text-lg leading-relaxed text-white">
+            Amadu Massally is a cultural bridge-builder, storyteller, and
+            community leader whose work unites the African diaspora with
+            authenticity and care. With roots in Sierra Leone and strong
+            relationships across the Gullah Geechee corridor, he has dedicated
+            his life to repairing cultural fractures and reconnecting families,
+            traditions, and histories across continents.
+          </p>
+          <motion.a
+            whileHover={{ scale: 1.05 }}
+            href="#book-amadu"
+            className="inline-block px-8 py-3 rounded-full bg-[#C9A74C] text-white font-semibold transition-colors hover:bg-[#a48639]"
+          >
+            Book Amadu Massally for a Keynote or Workshop
+          </motion.a>
+        </motion.div>
+
         {/* Two side-by-side joined cards */}
         <motion.div
           initial={{ opacity: 0, y: 40 }}
@@ -100,7 +129,7 @@ export default function Social() {
           ))}
         </motion.div>
 
-        {/* Golden button now at the very bottom */}
+        {/* Golden button at the very bottom */}
         <motion.div
           initial={{ opacity: 0, y: 30 }}
           whileInView={{ opacity: 1, y: 0 }}

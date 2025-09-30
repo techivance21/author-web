@@ -31,15 +31,8 @@ export default function Narrative() {
           transition={{ duration: 1 }}
           className="max-w-4xl mx-auto text-center"
         >
-          <h2 className="text-3xl md:text-4xl font-semibold mb-6">
-            From hush to rhythm, from silence to song…
-          </h2>
-          <p className="text-lg md:text-xl text-neutral-200 leading-relaxed">
-            This is where the Gullah Geechee story is told as one unbroken arc.
-            What began as whispers in the dark has become a chorus that spans
-            centuries and continents. The Gullah Geechee Trilogy is more than
-            three books it is a covenant of remembrance, return, and reassembly.
-          </p>
+          <h2 className="text-3xl md:text-4xl font-semibold">
+        The Gullah Geechee Trilogy is more than books it is a covenant of history, memory, and future.          </h2>
         </motion.div>
 
         {/* Book covers with ratings */}

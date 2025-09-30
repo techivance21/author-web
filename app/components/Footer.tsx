@@ -11,6 +11,11 @@ import {
   Map,
   Youtube,
   Facebook,
+  Home,
+  Calendar,
+  Info,
+  Book,
+  UserCircle,
 } from "lucide-react";
 
 const navyBlue = "#0a1a4f";
@@ -18,7 +23,7 @@ const navyBlue = "#0a1a4f";
 export default function Footer() {
   return (
     <footer className="bg-white w-full border-t border-gray-200">
-      <div className="max-w-7xl mx-auto px-6 py-16 grid grid-cols-1 md:grid-cols-4 gap-10 text-center md:text-left">
+      <div className="max-w-7xl mx-auto px-6 py-16 grid grid-cols-1 md:grid-cols-5 gap-10 text-center md:text-left">
         {/* Left Section */}
         <div className="space-y-4">
           <h2 className="text-2xl font-bold text-[#0a1a4f] relative inline-block group">
@@ -32,6 +37,19 @@ export default function Footer() {
           <p className="text-black italic group hover:underline hover:decoration-[#0a1a4f] hover:underline-offset-4">
             Let this be the beginning of the conversation, not the end.
           </p>
+        </div>
+
+        {/* Quick Links */}
+        <div className="space-y-3">
+          <h3 className="text-xl font-semibold text-[#0a1a4f] relative group inline-block">
+            Quick Links
+            <span className="block h-0.5 bg-[#0a1a4f] max-w-0 group-hover:max-w-full transition-all duration-300 mt-1"></span>
+          </h3>
+          <FooterLink icon={<Home size={18} />} text="Home" />
+          <FooterLink icon={<Book size={18} />} text="Books" />
+          <FooterLink icon={<Calendar size={18} />} text="Events" />
+          <FooterLink icon={<Info size={18} />} text="About" />
+          <FooterLink icon={<UserCircle size={18} />} text="Contact" />
         </div>
 
         {/* Contact */}

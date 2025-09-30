@@ -65,13 +65,13 @@ export default function Hero() {
           transition={{ duration: 1, delay: 1.3 }}
           className="mt-8 flex flex-wrap gap-4"
         >
-          <button className="px-6 py-3 rounded-md bg-[#C9A74C] text-white font-medium hover:bg-[#B08E3D] transition-colors">
+          <button className="px-6 py-3 rounded-md bg-[#0a1a4f] text-white font-medium hover:bg-[#092040] transition-colors">
             Explore the Trilogy
           </button>
-          <button className="px-6 py-3 rounded-md bg-[#C9A74C] text-white font-medium hover:bg-[#B08E3D] transition-colors">
+          <button className="px-6 py-3 rounded-md bg-[#0a1a4f] text-white font-medium hover:bg-[#092040] transition-colors">
             Buy Now
           </button>
-          <button className="px-6 py-3 rounded-md bg-[#C9A74C] text-white font-medium hover:bg-[#B08E3D] transition-colors">
+          <button className="px-6 py-3 rounded-md bg-[#0a1a4f] text-white font-medium hover:bg-[#092040] transition-colors">
             Subscribe
           </button>
         </motion.div>
