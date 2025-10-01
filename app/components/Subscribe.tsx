@@ -78,7 +78,7 @@ export default function Subscribe() {
             type="email"
             placeholder="Enter your email"
             className="w-72 px-4 py-3 rounded-full bg-white/20 text-white placeholder-white/70
-                       border-2 border-[#0a1a4f] outline-none focus:ring-0"
+                       border-2 border-[#0a1a4f] outline-none focus:border-[#061033] focus:bg-white/30 transition-all duration-300"
           />
           <button
             type="submit"

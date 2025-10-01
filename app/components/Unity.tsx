@@ -73,7 +73,7 @@ export default function Unity() {
           <motion.button
             whileHover={{ scale: 1.05 }}
             whileTap={{ scale: 0.97 }}
-            className="rounded-full px-8 py-3 font-semibold bg-[#C9A74C] text-white transition-colors duration-300 hover:bg-[#b8933f]"
+            className="rounded-full px-8 py-3 font-semibold bg-[#0a1a4f] text-white transition-colors duration-300 hover:bg-[#061033]"
           >
             {slides[index].button}
           </motion.button>

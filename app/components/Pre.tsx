@@ -10,7 +10,7 @@ export default function Pre() {
       style={{ backgroundImage: "url('/bg2.png')" }}
     >
       {/* Dark-blue overlay with lighter transparency */}
-      <div className="absolute inset-0 bg-[#0A2342]/40" />
+      <div className="absolute inset-0 bg-[#0a1a4f]/40" />
 
       <div className="relative z-10 max-w-6xl mx-auto flex flex-col md:flex-row items-center gap-10 px-6 py-20">
         {/* ==== LEFT : Book Cover with 15% OFF badge ==== */}
@@ -33,7 +33,7 @@ export default function Pre() {
             {/* === Custom 15% OFF Circle Badge === */}
             <div
               className="absolute -top-6 -right-6 flex items-center justify-center
-                         w-20 h-20 rounded-full bg-gradient-to-br from-[#0A2342] to-[#0F3E78]
+                         w-20 h-20 rounded-full bg-gradient-to-br from-[#0a1a4f] to-[#061033]
                          text-white font-bold text-lg shadow-[0_8px_20px_rgba(0,0,0,0.3)]
                          border-4 border-white/20 group-hover:shadow-[0_12px_35px_rgba(0,0,0,0.45)]
                          transition-shadow duration-300"
@@ -73,8 +73,8 @@ export default function Pre() {
             whileInView={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8, delay: 0.4 }}
             viewport={{ once: true }}
-            className="inline-block px-6 py-3 rounded-full bg-[#0A2342] text-white font-semibold
-                       hover:bg-[#081A31] hover:shadow-[0_12px_30px_rgba(0,0,0,0.4)]
+            className="inline-block px-6 py-3 rounded-full bg-[#0a1a4f] text-white font-semibold
+                       hover:bg-[#061033] hover:shadow-[0_12px_30px_rgba(0,0,0,0.4)]
                        transition-all duration-300"
           >
             Pre-Subscribe

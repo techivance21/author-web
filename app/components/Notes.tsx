@@ -15,9 +15,7 @@ export default function Notes() {
     <section className="bg-[#bfbfbf] w-full flex justify-center py-24 px-4">
       <div className="max-w-2xl w-full text-center">
         {/* Heading */}
-        <h2
-          className="text-3xl md:text-4xl font-['Playfair_Display'] font-bold text-black mb-6"
-        >
+        <h2 className="text-3xl md:text-4xl font-['Playfair_Display'] font-bold text-black mb-6">
           Notes from the Near Future
         </h2>
 
@@ -39,15 +37,16 @@ export default function Notes() {
             onChange={(e) => setEmail(e.target.value)}
             placeholder="Email Address"
             required
-            className="w-full sm:w-[320px] px-6 py-4 border border-gray-400 
+            className="w-full sm:w-[320px] px-6 py-4 border border-[#0a1a4f] 
                        text-black placeholder-gray-500 bg-white font-['Inter']
-                       text-lg focus:outline-none focus:border-gray-600 rounded-md"
+                       text-lg focus:outline-none focus:border-[#061033] rounded-md
+                       transition-all duration-300"
           />
           <button
             type="submit"
-            className="w-full sm:w-[180px] px-6 py-4 bg-[#d9b99b] text-white
+            className="w-full sm:w-[180px] px-6 py-4 bg-[#0a1a4f] text-white
                        font-['Inter'] text-lg font-medium rounded-md
-                       hover:bg-[#c5a685] transition-colors duration-300"
+                       hover:bg-[#061033] transition-colors duration-300"
           >
             Subscribe
           </button>

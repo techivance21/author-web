@@ -32,7 +32,9 @@ export default function Narrative() {
           className="max-w-4xl mx-auto text-center"
         >
           <h2 className="text-3xl md:text-4xl font-semibold">
-        The Gullah Geechee Trilogy is more than books it is a covenant of history, memory, and future.          </h2>
+            The Gullah Geechee Trilogy is more than books — it is a covenant of
+            history, memory, and future.
+          </h2>
         </motion.div>
 
         {/* Book covers with ratings */}
@@ -45,7 +47,6 @@ export default function Narrative() {
             buyHref="/books/the-gullah-geechee-saga"
             subscribeHref="/subscribe"
             rating={5}
-            gold={gold}
           />
 
           {/* Book 2 */}
@@ -56,7 +57,6 @@ export default function Narrative() {
             buyHref="/books/gambozos-storytelling"
             subscribeHref="/subscribe"
             rating={5}
-            gold={gold}
           />
 
           {/* Book 3 - no rating */}
@@ -67,7 +67,6 @@ export default function Narrative() {
             buyHref="/books/diaspora-scavenger"
             subscribeHref="/subscribe"
             rating={0} // shows Coming Soon
-            gold={gold}
           />
         </div>
 
@@ -80,7 +79,7 @@ export default function Narrative() {
           className="max-w-6xl mx-auto mt-24 text-center"
         >
           <h3 className="text-3xl md:text-4xl font-semibold mb-10">
-            The Covenant of Three - One Story, Three Doors
+            The Covenant of Three — One Story, Three Doors
           </h3>
 
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
@@ -118,7 +117,6 @@ function BookCard({
   buyHref,
   subscribeHref,
   rating,
-  gold,
 }: {
   img: string;
   title: string;
@@ -126,7 +124,6 @@ function BookCard({
   buyHref: string;
   subscribeHref: string;
   rating: number;
-  gold: string;
 }) {
   return (
     <motion.div
@@ -154,20 +151,25 @@ function BookCard({
           ))}
         </div>
       ) : (
-        <p className="mt-3 text-sm italic text-neutral-300">Rating coming soon</p>
+        <p className="mt-3 text-sm italic text-neutral-300">
+          Rating coming soon
+        </p>
       )}
 
       <div className="mt-4 flex justify-center gap-3">
         <Link
           href={buyHref}
-          className={`inline-block px-5 py-2 rounded-full bg-[${gold}] text-white font-medium hover:shadow-[0_0_20px_${gold}] transition`}
+          className="inline-block px-5 py-2 rounded-full text-white font-medium 
+                     bg-[#0a1a4f] hover:bg-[#092040] transition-colors duration-300"
         >
           {rating > 0 ? "Buy Now" : "Pre-Subscribe"}
         </Link>
+
         {rating > 0 && (
           <Link
             href={subscribeHref}
-            className={`inline-block px-5 py-2 rounded-full bg-[${gold}] text-white font-medium hover:shadow-[0_0_20px_${gold}] transition`}
+            className="inline-block px-5 py-2 rounded-full text-white font-medium 
+                       bg-[#0a1a4f] hover:bg-[#092040] transition-colors duration-300"
           >
             Subscribe
           </Link>
@@ -190,7 +192,8 @@ function InfoBox({
 }) {
   return (
     <div
-      className={`p-6 border rounded-xl bg-white/10 backdrop-blur-md text-white border-[${gold}]`}
+      className="p-6 rounded-xl bg-white/10 backdrop-blur-md text-white"
+      style={{ border: `1px solid ${gold}` }}
     >
       <div className="mb-4 flex justify-center">{icon}</div>
       <h4 className="text-xl font-semibold mb-2">{title}</h4>
