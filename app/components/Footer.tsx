@@ -16,84 +16,177 @@ import {
   Info,
   Book,
   UserCircle,
+  ChevronDown,
 } from "lucide-react";
 
 const navyBlue = "#0a1a4f";
 
 export default function Footer() {
+  const quickLinks = [
+    { icon: <Home size={18} />, text: "Home" },
+    { icon: <Book size={18} />, text: "Books" },
+    { icon: <Calendar size={18} />, text: "Events" },
+    { icon: <Info size={18} />, text: "About" },
+    { icon: <UserCircle size={18} />, text: "Contact" },
+  ];
+
+  const contact = [
+    { icon: <Phone size={18} />, text: "(469) 618-8840" },
+    { icon: <MessageSquare size={18} />, text: "Send a Message" },
+    { icon: <Mail size={18} />, text: "Connect via Email" },
+    { icon: <Facebook size={18} />, text: "Catch us on Facebook" },
+    { icon: <Youtube size={18} />, text: "Watch us on YouTube" },
+  ];
+
+  const discover = [
+    { icon: <BookOpen size={18} />, text: "Cultural Education" },
+    { icon: <Compass size={18} />, text: "Heritage Journeys" },
+    { icon: <Mic size={18} />, text: "Speaking Engagements" },
+    { icon: <Users size={18} />, text: "Diaspora Scavenger" },
+  ];
+
+  const explore = [
+    { icon: <BookOpen size={18} />, text: "The Book" },
+    { icon: <Map size={18} />, text: "Events & Bookings" },
+    { icon: <Users size={18} />, text: "Get Involved" },
+    { icon: <Mic size={18} />, text: "Echoes" },
+  ];
+
   return (
-    <footer className="bg-white w-full border-t border-gray-200">
-      <div className="max-w-7xl mx-auto px-6 py-16 grid grid-cols-1 md:grid-cols-5 gap-10 text-center md:text-left">
-        {/* Left Section */}
-        <div className="space-y-4">
-          <h2 className="text-2xl font-bold text-[#0a1a4f] relative inline-block group">
+    <footer className="bg-white w-full border-t border-gray-200 font-sans">
+      {/* ===== Mobile: Accordion layout ===== */}
+      <div className="md:hidden max-w-7xl mx-auto px-4 py-10 space-y-6">
+        {/* Brand / intro (always visible) */}
+        <div className="space-y-3 text-center">
+          <h2 className="font-display text-2xl font-bold text-[#0a1a4f] leading-snug">
             Re-rooted. Remembered. Reassembled.
-            <span className="block h-0.5 bg-[#0a1a4f] max-w-0 group-hover:max-w-full transition-all duration-300 mt-1"></span>
           </h2>
-          <p className="text-black leading-relaxed group hover:underline hover:decoration-[#0a1a4f] hover:underline-offset-4">
+          <p className="text-black">
             A People Dispersed. A Culture Reassembled. A Story Returned in Three
             Volumes. Reach Us Directly.
           </p>
-          <p className="text-black italic group hover:underline hover:decoration-[#0a1a4f] hover:underline-offset-4">
+          <p className="text-black italic">
             Let this be the beginning of the conversation, not the end.
           </p>
         </div>
 
-        {/* Quick Links */}
-        <div className="space-y-3">
-          <h3 className="text-xl font-semibold text-[#0a1a4f] relative group inline-block">
-            Quick Links
-            <span className="block h-0.5 bg-[#0a1a4f] max-w-0 group-hover:max-w-full transition-all duration-300 mt-1"></span>
-          </h3>
-          <FooterLink icon={<Home size={18} />} text="Home" />
-          <FooterLink icon={<Book size={18} />} text="Books" />
-          <FooterLink icon={<Calendar size={18} />} text="Events" />
-          <FooterLink icon={<Info size={18} />} text="About" />
-          <FooterLink icon={<UserCircle size={18} />} text="Contact" />
+        <AccordionSection title="Quick Links">
+          <ul className="mt-2 space-y-3">
+            {quickLinks.map((l, i) => (
+              <li key={i}>
+                <FooterLink {...l} />
+              </li>
+            ))}
+          </ul>
+        </AccordionSection>
+
+        <AccordionSection title="Contact">
+          <ul className="mt-2 space-y-3">
+            {contact.map((l, i) => (
+              <li key={i}>
+                <FooterLink {...l} />
+              </li>
+            ))}
+          </ul>
+        </AccordionSection>
+
+        <AccordionSection title="Discover">
+          <ul className="mt-2 space-y-3">
+            {discover.map((l, i) => (
+              <li key={i}>
+                <FooterLink {...l} />
+              </li>
+            ))}
+          </ul>
+        </AccordionSection>
+
+        <AccordionSection title="Explore">
+          <ul className="mt-2 space-y-3">
+            {explore.map((l, i) => (
+              <li key={i}>
+                <FooterLink {...l} />
+              </li>
+            ))}
+          </ul>
+        </AccordionSection>
+      </div>
+
+      {/* ===== Desktop / Tablet: Grid layout ===== */}
+      <div className="hidden md:grid max-w-7xl mx-auto px-6 py-14 lg:py-16 grid-cols-12 gap-10">
+        {/* Left brand spans more columns for balance */}
+        <div className="col-span-12 lg:col-span-4 space-y-4">
+          <h2 className="font-display text-2xl lg:text-3xl font-bold text-[#0a1a4f] leading-snug">
+            Re-rooted. Remembered. Reassembled.
+          </h2>
+          <p className="text-black leading-relaxed">
+            A People Dispersed. A Culture Reassembled. A Story Returned in Three
+            Volumes. Reach Us Directly.
+          </p>
+          <p className="text-black italic">
+            Let this be the beginning of the conversation, not the end.
+          </p>
         </div>
 
-        {/* Contact */}
-        <div className="space-y-3">
-          <h3 className="text-xl font-semibold text-[#0a1a4f] relative group inline-block">
-            Contact
-            <span className="block h-0.5 bg-[#0a1a4f] max-w-0 group-hover:max-w-full transition-all duration-300 mt-1"></span>
-          </h3>
-          <FooterLink icon={<Phone size={18} />} text="(469) 618-8840" />
-          <FooterLink icon={<MessageSquare size={18} />} text="Send a Message" />
-          <FooterLink icon={<Mail size={18} />} text="Connect via Email" />
-          <FooterLink icon={<Facebook size={18} />} text="Catch us on Facebook" />
-          <FooterLink icon={<Youtube size={18} />} text="Watch us on YouTube" />
+        <div className="col-span-6 lg:col-span-2">
+          <FooterHeading>Quick Links</FooterHeading>
+          <ul className="mt-4 space-y-3">
+            {quickLinks.map((l, i) => (
+              <li key={i}>
+                <FooterLink {...l} />
+              </li>
+            ))}
+          </ul>
         </div>
 
-        {/* Discover */}
-        <div className="space-y-3">
-          <h3 className="text-xl font-semibold text-[#0a1a4f] relative group inline-block">
-            Discover
-            <span className="block h-0.5 bg-[#0a1a4f] max-w-0 group-hover:max-w-full transition-all duration-300 mt-1"></span>
-          </h3>
-          <FooterLink icon={<BookOpen size={18} />} text="Cultural Education" />
-          <FooterLink icon={<Compass size={18} />} text="Heritage Journeys" />
-          <FooterLink icon={<Mic size={18} />} text="Speaking Engagements" />
-          <FooterLink icon={<Users size={18} />} text="Diaspora Scavenger" />
+        <div className="col-span-6 lg:col-span-2">
+          <FooterHeading>Contact</FooterHeading>
+          <ul className="mt-4 space-y-3">
+            {contact.map((l, i) => (
+              <li key={i}>
+                <FooterLink {...l} />
+              </li>
+            ))}
+          </ul>
         </div>
 
-        {/* Explore */}
-        <div className="space-y-3">
-          <h3 className="text-xl font-semibold text-[#0a1a4f] relative group inline-block">
-            Explore
-            <span className="block h-0.5 bg-[#0a1a4f] max-w-0 group-hover:max-w-full transition-all duration-300 mt-1"></span>
-          </h3>
-          <FooterLink icon={<BookOpen size={18} />} text="The Book" />
-          <FooterLink icon={<Map size={18} />} text="Events & Bookings" />
-          <FooterLink icon={<Users size={18} />} text="Get Involved" />
-          <FooterLink icon={<Mic size={18} />} text="Echoes" />
+        <div className="col-span-6 lg:col-span-2">
+          <FooterHeading>Discover</FooterHeading>
+          <ul className="mt-4 space-y-3">
+            {discover.map((l, i) => (
+              <li key={i}>
+                <FooterLink {...l} />
+              </li>
+            ))}
+          </ul>
+        </div>
+
+        <div className="col-span-6 lg:col-span-2">
+          <FooterHeading>Explore</FooterHeading>
+          <ul className="mt-4 space-y-3">
+            {explore.map((l, i) => (
+              <li key={i}>
+                <FooterLink {...l} />
+              </li>
+            ))}
+          </ul>
         </div>
       </div>
 
+      {/* Bottom bar */}
       <div className="border-t border-gray-200 py-6 text-center text-gray-500 text-sm">
         © {new Date().getFullYear()} Amadu Massally. All rights reserved.
       </div>
     </footer>
+  );
+}
+
+/* ================= Subcomponents ================= */
+
+function FooterHeading({ children }: { children: React.ReactNode }) {
+  return (
+    <h3 className="font-display text-xl font-semibold text-[#0a1a4f]">
+      {children}
+    </h3>
   );
 }
 
@@ -107,12 +200,27 @@ function FooterLink({
   return (
     <a
       href="#"
-      className="flex items-center justify-center md:justify-start gap-2 text-black transition-all duration-300 group hover:text-[#0a1a4f] hover:underline hover:decoration-[#0a1a4f] hover:underline-offset-4"
+      className="flex items-center gap-2 text-black transition-colors duration-200 hover:text-[#0a1a4f]"
     >
-      <span className="transition-transform duration-300 group-hover:scale-110">
-        {icon}
-      </span>
-      <span>{text}</span>
+      <span className="shrink-0">{icon}</span>
+      <span className="truncate">{text}</span>
     </a>
+  );
+}
+
+/* Mobile accordion section (no JS) */
+function AccordionSection({ title, children }: { title: string; children: React.ReactNode }) {
+  return (
+    <details className="group rounded-lg border border-gray-200 bg-white">
+      <summary className="flex w-full items-center justify-between cursor-pointer select-none list-none px-4 py-3">
+        <span className="font-display text-lg text-[#0a1a4f]">{title}</span>
+        <ChevronDown
+          className="transition-transform duration-200 group-open:rotate-180"
+          size={18}
+          color={navyBlue}
+        />
+      </summary>
+      <div className="px-4 pb-4">{children}</div>
+    </details>
   );
 }

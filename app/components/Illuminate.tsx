@@ -4,7 +4,7 @@ import { motion } from "framer-motion";
 import { useMemo } from "react";
 
 export default function Illuminate() {
-  // ✅ Generate stars once (SSR-safe)
+  // stars and glows
   const stars = useMemo(
     () =>
       [...Array(40)].map(() => ({
@@ -33,11 +33,10 @@ export default function Illuminate() {
   );
 
   return (
-    <section className="relative min-h-[70vh] w-full flex items-center justify-center text-center overflow-hidden bg-gradient-to-b from-[#b89a65] to-white">
-      {/* Overlay gradient for readability */}
-      <div className="absolute inset-0 bg-gradient-to-t from-black/40 via-transparent to-transparent" />
+    <section className="relative min-h-[70vh] w-full flex items-center justify-center text-center overflow-hidden bg-gradient-to-b from-[#0a1a4f] to-white font-sans">
+      <div className="absolute inset-0 bg-gradient-to-t from-black/25 via-transparent to-transparent" />
 
-      {/* Star field */}
+      {/* stars */}
       <div className="absolute inset-0">
         {stars.map((s, i) => (
           <motion.span
@@ -53,17 +52,11 @@ export default function Illuminate() {
             }}
           />
         ))}
-
         {glows.map((g, i) => (
           <motion.span
             key={`g-${i}`}
-            className="absolute rounded-full bg-white/30 blur-2xl"
-            style={{
-              width: g.size,
-              height: g.size,
-              top: g.top,
-              left: g.left,
-            }}
+            className="absolute rounded-full bg-white/20 blur-2xl"
+            style={{ width: g.size, height: g.size, top: g.top, left: g.left }}
             animate={{ opacity: [0.2, 0.6, 0.2], x: [0, g.dx], y: [0, g.dy] }}
             transition={{
               duration: g.duration,
@@ -75,14 +68,13 @@ export default function Illuminate() {
         ))}
       </div>
 
-      {/* Content */}
-      <div className="relative z-10 max-w-4xl px-6">
+      <div className="relative z-10 w-full max-w-4xl px-6 py-16">
         <motion.h2
           initial={{ opacity: 0, y: 30 }}
           whileInView={{ opacity: 1, y: 0 }}
-          transition={{ duration: 1, ease: "easeOut" }}
+          transition={{ duration: 1 }}
           viewport={{ once: true }}
-          className="text-3xl md:text-5xl font-serif font-bold text-white drop-shadow-lg"
+          className="text-3xl md:text-5xl font-display font-bold text-white drop-shadow-md leading-tight"
         >
           Reader Invitation
         </motion.h2>
@@ -90,46 +82,81 @@ export default function Illuminate() {
         <motion.p
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
-          transition={{ duration: 1.2, ease: "easeOut", delay: 0.3 }}
+          transition={{ duration: 1, delay: 0.2 }}
           viewport={{ once: true }}
-          className="mt-6 text-lg md:text-xl text-white/90 leading-relaxed drop-shadow-md"
+          className="mt-6 text-lg md:text-xl text-white/90 leading-relaxed font-sans"
         >
           “This Saga is not just a book. It is a summons. Read it as testimony,
           as inheritance, as covenant.”
         </motion.p>
 
-        {/* CTA Buttons */}
+        <motion.h3
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          transition={{ duration: 1, delay: 0.4 }}
+          viewport={{ once: true }}
+          className="mt-10 text-2xl md:text-3xl font-display font-semibold text-white"
+        >
+          Keep the hush alive. Walk the rhythm forward.
+        </motion.h3>
+
+        <motion.form
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          transition={{ duration: 1, delay: 0.6 }}
+          viewport={{ once: true }}
+          onSubmit={(e) => e.preventDefault()}
+          className="mt-6 flex flex-col md:flex-row items-center justify-center gap-3"
+        >
+          <input
+            type="email"
+            placeholder="Enter your email"
+            className="w-72 px-4 py-2.5 rounded-full bg-white/20 text-white placeholder-white/70
+                       border border-[#0a1a4f] outline-none focus:border-[#061033] focus:bg-white/30 transition-all duration-300 text-sm md:text-base font-sans"
+          />
+          <ThemeButton text="Subscribe" small />
+        </motion.form>
+
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
-          transition={{ duration: 1.2, ease: "easeOut", delay: 0.6 }}
+          transition={{ duration: 1, delay: 0.8 }}
           viewport={{ once: true }}
-          className="mt-10 space-y-6"
+          className="mt-10 space-y-4"
         >
-          {/* First row */}
-          <div className="flex flex-col sm:flex-row justify-center gap-4">
-            <CTAButton text="Subscribe for Bonus Features" />
-            <CTAButton text="Download Sample Chapter" />
+          <div className="flex flex-col sm:flex-row justify-center gap-3">
+            <ThemeButton text="Subscribe for Bonus Features" />
+            <ThemeButton text="Download Sample Chapter" />
           </div>
-
-          {/* Second row */}
           <div>
-            <CTAButton text="Buy Now" />
+            <ThemeButton text="Buy Now" />
           </div>
         </motion.div>
       </div>
+
+      <div className="absolute bottom-0 left-0 w-full h-20 bg-gradient-to-t from-white to-transparent pointer-events-none" />
     </section>
   );
 }
 
-function CTAButton({ text }: { text: string }) {
+function ThemeButton({
+  text,
+  small = false,
+}: {
+  text: string;
+  small?: boolean;
+}) {
   return (
     <button
-      className="px-6 py-3 border-2 rounded-full font-medium text-white border-[#C9A74C] transition relative overflow-hidden group"
+      className={`relative inline-flex items-center justify-center 
+                 ${small ? "px-5 py-2 text-sm" : "px-6 py-2.5 text-sm md:text-base"} 
+                 rounded-full font-medium text-white font-sans
+                 bg-[#0a1a4f] border border-[#0a1a4f]
+                 transition-all duration-300 group 
+                 hover:bg-[#061033] hover:border-[#061033]
+                 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-white/60`}
     >
-      <span className="relative z-10">{text}</span>
-      <span className="absolute inset-0 bg-[#C9A74C]/20 opacity-0 group-hover:opacity-100 transition-opacity" />
-      <span className="absolute inset-0 rounded-full shadow-[0_0_20px_#C9A74C] opacity-0 group-hover:opacity-60 transition-opacity" />
+      {text}
     </button>
   );
 }

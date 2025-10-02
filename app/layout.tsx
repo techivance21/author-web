@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import { Playfair_Display, Inter } from "next/font/google";
-import "./globals.css";
+import { jakarta, cormorant } from "./font";
+import "./globals.css"
 
 // Elegant serif for headings
 const playfair = Playfair_Display({
@@ -61,7 +62,7 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en" className={`${playfair.variable} ${inter.variable}`}>
+    <html lang="en" className={`${playfair.variable} ${inter.variable} ${jakarta.variable} ${cormorant.variable}`}>
       <body className="bg-white text-gray-900 antialiased">
         {children}
       </body>

@@ -2,7 +2,6 @@
 import Hero from "./components/Hero";
 import Narrative from "./components/Narrative";
 import Event from './components/Event';
-import Subscribe from "./components/Subscribe";
 import Social from "./components/Social";
 import AuthorSection from "./components/AuthorSection";
 import Illuminate from "./components/Illuminate";
@@ -15,7 +14,6 @@ export default function Home() {
       <Hero />
       <Narrative />
       <Event />
-      <Subscribe />
       <Social />
       <AuthorSection />
       <Unity />

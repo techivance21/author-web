@@ -25,59 +25,61 @@ export default function Unity() {
   useEffect(() => {
     const id = setInterval(
       () => setIndex((prev) => (prev + 1) % slides.length),
-      6000
+      5000 // faster cycle
     );
     return () => clearInterval(id);
   }, []);
 
   return (
-    <section className="relative w-full h-[85vh] overflow-hidden">
-      {/* Background cross-fade */}
+    <section className="relative w-full h-[85vh] overflow-hidden font-sans">
       <AnimatePresence mode="wait">
         <motion.div
           key={index}
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
           exit={{ opacity: 0 }}
-          transition={{ duration: 1.8, ease: "easeInOut" }}
+          transition={{ duration: 1, ease: "easeInOut" }}
           className="absolute inset-0"
         >
           <Image
             src={slides[index].img}
-            alt="Unity Background"
+            alt={slides[index].title}
             fill
             priority
-            className="object-cover scale-105 transition-transform duration-[6000ms] ease-out"
+            sizes="100vw"
+            className="object-cover object-center"
           />
-          {/* soft gradient overlay for readability */}
-          <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-[#0a1a4f]/50 to-black/30" />
+          <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-[#0a1a4f]/40 to-black/20" />
         </motion.div>
       </AnimatePresence>
 
-      {/* Floating text & CTA */}
       <div className="relative z-10 flex items-center h-full px-6 md:px-20">
-        <motion.div
-          key={slides[index].title}
-          initial={{ opacity: 0, y: 30 }}
-          animate={{ opacity: 1, y: 0 }}
-          exit={{ opacity: 0, y: -30 }}
-          transition={{ duration: 1, ease: "easeOut" }}
-          className="max-w-2xl"
-        >
-          <h2 className="text-3xl md:text-5xl font-extrabold tracking-wide mb-5 text-white">
-            {slides[index].title}
-          </h2>
-          <p className="text-white/90 mb-8 leading-relaxed text-lg md:text-xl">
-            {slides[index].text}
-          </p>
-          <motion.button
-            whileHover={{ scale: 1.05 }}
-            whileTap={{ scale: 0.97 }}
-            className="rounded-full px-8 py-3 font-semibold bg-[#0a1a4f] text-white transition-colors duration-300 hover:bg-[#061033]"
+        <AnimatePresence mode="wait">
+          <motion.div
+            key={slides[index].title}
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            exit={{ opacity: 0, y: -20 }}
+            transition={{ duration: 0.8, ease: "easeOut" }}
+            className="max-w-2xl bg-black/25 backdrop-blur-sm rounded-xl p-6 md:p-8 shadow-lg"
           >
-            {slides[index].button}
-          </motion.button>
-        </motion.div>
+            <h2 className="text-3xl md:text-5xl font-display font-bold mb-4 text-white leading-tight drop-shadow-md">
+              {slides[index].title}
+            </h2>
+            <p className="text-white/90 mb-6 leading-relaxed text-base md:text-lg font-sans">
+              {slides[index].text}
+            </p>
+            <motion.button
+              whileHover={{ scale: 1.04 }}
+              whileTap={{ scale: 0.97 }}
+              className="inline-flex items-center justify-center rounded-full px-6 py-2.5 md:px-7 md:py-3 
+                         bg-[#0a1a4f] hover:bg-[#061033] text-white font-sans font-medium text-sm md:text-base 
+                         shadow-md hover:shadow-lg transition-colors duration-300 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-white/60"
+            >
+              {slides[index].button}
+            </motion.button>
+          </motion.div>
+        </AnimatePresence>
       </div>
     </section>
   );
