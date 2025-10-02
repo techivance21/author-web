@@ -5,7 +5,7 @@ import Image from "next/image";
 import { BookOpen, Mic, Compass } from "lucide-react";
 
 export default function Narrative() {
-  const gold = "#C9A74C";
+  const primaryColor = "#3B82F6"; // brighter blue for contrast
 
   return (
     <section className="relative w-full text-white">
@@ -45,21 +45,18 @@ export default function Narrative() {
             title="The Gullah Geechee Saga"
             subtitle="Through African Eyes"
             rating={5}
-            gold={gold}
           />
           <BookCard
             img="/book2.png"
             title="Gambozo’s Storytelling"
             subtitle="A Saga Within the Saga"
             rating={5}
-            gold={gold}
           />
           <BookCard
             img="/book3.png"
             title="Diaspora Scavenger"
             subtitle="Letters, Ledgers & Ghost Routes"
             rating={0}
-            gold={gold}
           />
         </div>
 
@@ -77,22 +74,22 @@ export default function Narrative() {
 
           <div className="mt-10 grid grid-cols-1 gap-6 md:grid-cols-3">
             <InfoBox
-              icon={<BookOpen size={40} color={gold} />}
+              icon={<BookOpen size={42} color={primaryColor} strokeWidth={2.2} />}
               title="The Gullah Geechee Saga"
               text="The flagship—memory carried through African eyes."
-              gold={gold}
+              borderColor={primaryColor}
             />
             <InfoBox
-              icon={<Mic size={40} color={gold} />}
+              icon={<Mic size={42} color={primaryColor} strokeWidth={2.2} />}
               title="Gambozo’s Storytelling"
               text="The oral heartbeat—where ancestors speak by firelight."
-              gold={gold}
+              borderColor={primaryColor}
             />
             <InfoBox
-              icon={<Compass size={40} color={gold} />}
+              icon={<Compass size={42} color={primaryColor} strokeWidth={2.2} />}
               title="Diaspora Scavenger"
               text="The forensic map—piecing ledgers into a living atlas."
-              gold={gold}
+              borderColor={primaryColor}
             />
           </div>
         </motion.div>
@@ -108,13 +105,11 @@ function BookCard({
   title,
   subtitle,
   rating,
-  gold,
 }: {
   img: string;
   title: string;
   subtitle: string;
   rating: number;
-  gold: string;
 }) {
   const isComing = rating <= 0;
 
@@ -139,7 +134,7 @@ function BookCard({
           {isComing && (
             <div
               className="absolute left-0 top-4 rounded-r-md bg-white/15 px-3 py-1 text-xs font-sans tracking-wide"
-              style={{ borderLeft: `3px solid ${gold}` }}
+              style={{ borderLeft: `3px solid #3B82F6` }}
             >
               Coming Soon
             </div>
@@ -162,7 +157,6 @@ function BookCard({
           </div>
         )}
 
-        {/* Plain buttons instead of links */}
         <div className="mt-5 flex flex-wrap justify-center gap-3">
           <PrimaryButton>{isComing ? "Pre-Order / Learn More" : "Buy Now"}</PrimaryButton>
           <PrimaryButton>Subscribe</PrimaryButton>
@@ -178,17 +172,17 @@ function InfoBox({
   icon,
   title,
   text,
-  gold,
+  borderColor,
 }: {
   icon: React.ReactNode;
   title: string;
   text: string;
-  gold: string;
+  borderColor: string;
 }) {
   return (
     <div
-      className="rounded-2xl border bg-white/5 p-6 sm:p-7 text-center backdrop-blur transition hover:bg-white/[0.08] hover:-translate-y-[2px]"
-      style={{ borderColor: gold }}
+      className="rounded-2xl border-2 bg-white/5 p-6 sm:p-7 text-center backdrop-blur transition hover:bg-blue-500/10 hover:-translate-y-[3px]"
+      style={{ borderColor }}
     >
       <div className="mb-3 flex justify-center">{icon}</div>
       <h4 className="font-display text-[clamp(1.05rem,2.2vw,1.25rem)]">{title}</h4>
@@ -202,7 +196,7 @@ function PrimaryButton({ children }: { children: React.ReactNode }) {
   return (
     <button
       type="button"
-      className="inline-flex items-center justify-center rounded-xl bg-[#0A1A4F] px-5 py-2.5 text-sm md:text-base font-medium text-white shadow-[0_10px_28px_rgba(10,26,79,0.35)] ring-1 ring-white/10 transition hover:bg-[#0B205E] hover:shadow-[0_16px_38px_rgba(10,26,79,0.45)] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-white/70"
+      className="inline-flex items-center justify-center rounded-xl bg-[#0A1A4F] px-5 py-2.5 text-sm md:text-base font-medium text-white shadow-[0_10px_28px_rgba(10,26,79,0.35)] ring-1 ring-white/10 transition hover:bg-[#0B205E] hover:shadow-[0_16px_38px_rgba(10,26,79,0.45)] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-white/70 group"
     >
       {children}
       <span className="ml-2 -mr-1 inline-block transition-transform group-hover:translate-x-0.5">→</span>
