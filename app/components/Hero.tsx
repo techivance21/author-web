@@ -9,7 +9,7 @@ export default function Hero() {
     <section className="relative w-full h-screen overflow-hidden isolate">
       {/* Background */}
       <Image
-        src="/hero bg.jpg"
+        src="/author3.png"
         alt="Historic shoreline representing Gullah Geechee heritage"
         fill
         priority
@@ -80,9 +80,7 @@ export default function Hero() {
             className="mt-10 flex flex-wrap items-center justify-center gap-4"
           >
             <PrimaryButton href="/blogs">Explore the Trilogy</PrimaryButton>
-            <PrimaryButton href="https://www.amazon.com/Gambozos-Storytelling-Through-Diaspora-Scavengers/dp/B0FP357D39">
-              Buy Now
-            </PrimaryButton>
+            <PrimaryButton href="/books">Buy Now</PrimaryButton>
             <PrimaryButton href="/contact">Subscribe</PrimaryButton>
           </motion.div>
         </div>
