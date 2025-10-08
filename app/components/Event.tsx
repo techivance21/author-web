@@ -89,8 +89,9 @@ export default function Event() {
             descendants and allies to honor shared histories.
           </p>
 
-          <PrimaryButton as="a" href="#rsvp">
-            RSVP
+          {/* Featured button → Blogs */}
+          <PrimaryButton as="a" href="/blogs">
+            Read Articles
           </PrimaryButton>
         </motion.section>
 
@@ -124,7 +125,7 @@ export default function Event() {
               <p className="font-sans text-sm text-white/75 mb-5">
                 {event.description}
               </p>
-              <PrimaryButton as="a" href="#rsvp" size="sm">
+              <PrimaryButton as="a" href="/events" size="sm">
                 RSVP
               </PrimaryButton>
             </motion.article>
@@ -133,7 +134,7 @@ export default function Event() {
 
         {/* See All */}
         <div className="text-center">
-          <PrimaryButton as="a" href="#all-events">
+          <PrimaryButton as="a" href="/events">
             See All Events
           </PrimaryButton>
         </div>

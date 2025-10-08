@@ -17,39 +17,57 @@ import {
   Book,
   UserCircle,
   ChevronDown,
+  Newspaper, // optional icon for Blogs (fallback to Book if you prefer)
 } from "lucide-react";
 
 const navyBlue = "#0a1a4f";
 
 export default function Footer() {
+  /* ---------------- Quick Links with routes (includes Blogs) ---------------- */
   const quickLinks = [
-    { icon: <Home size={18} />, text: "Home" },
-    { icon: <Book size={18} />, text: "Books" },
-    { icon: <Calendar size={18} />, text: "Events" },
-    { icon: <Info size={18} />, text: "About" },
-    { icon: <UserCircle size={18} />, text: "Contact" },
+    { icon: <Home size={18} />, text: "Home", href: "/" },
+    { icon: <Book size={18} />, text: "Books", href: "/books" },
+    { icon: <Calendar size={18} />, text: "Events", href: "/events" },
+    { icon: <Info size={18} />, text: "About", href: "/about" },
+    { icon: <UserCircle size={18} />, text: "Contact", href: "/contact" },
+    { icon: <Newspaper size={18} />, text: "Blogs", href: "/blogs" }, // new
   ];
 
+  /* ---------------- Contact: line-by-line with correct links ---------------- */
   const contact = [
-    { icon: <Phone size={18} />, text: "(469) 618-8840" },
-    { icon: <MessageSquare size={18} />, text: "Send a Message" },
-    { icon: <Mail size={18} />, text: "Connect via Email" },
-    { icon: <Facebook size={18} />, text: "Catch us on Facebook" },
-    { icon: <Youtube size={18} />, text: "Watch us on YouTube" },
+    { icon: <Phone size={18} />, text: "(469) 618-8840", href: "tel:+14696188840" },
+    { icon: <MessageSquare size={18} />, text: "Send a Message", href: "/contact" },
+    {
+      icon: <Mail size={18} />,
+      text: "Connect via Email",
+      href: "mailto:amadu.massally@gmail.com",
+    },
+    {
+      icon: <Facebook size={18} />,
+      text: "Catch us on Facebook",
+      href: "https://www.facebook.com/amadu.massally",
+      external: true,
+    },
+    {
+      icon: <Youtube size={18} />,
+      text: "Watch us on YouTube",
+      href: "https://www.youtube.com/@fambultik-leadingafricanhe6341",
+      external: true,
+    },
   ];
 
   const discover = [
-    { icon: <BookOpen size={18} />, text: "Cultural Education" },
-    { icon: <Compass size={18} />, text: "Heritage Journeys" },
-    { icon: <Mic size={18} />, text: "Speaking Engagements" },
-    { icon: <Users size={18} />, text: "Diaspora Scavenger" },
+    { icon: <BookOpen size={18} />, text: "Cultural Education", href: "#" },
+    { icon: <Compass size={18} />, text: "Heritage Journeys", href: "#" },
+    { icon: <Mic size={18} />, text: "Speaking Engagements", href: "#" },
+    { icon: <Users size={18} />, text: "Diaspora Scavenger", href: "#" },
   ];
 
   const explore = [
-    { icon: <BookOpen size={18} />, text: "The Book" },
-    { icon: <Map size={18} />, text: "Events & Bookings" },
-    { icon: <Users size={18} />, text: "Get Involved" },
-    { icon: <Mic size={18} />, text: "Echoes" },
+    { icon: <BookOpen size={18} />, text: "The Book", href: "#" },
+    { icon: <Map size={18} />, text: "Events & Bookings", href: "#" },
+    { icon: <Users size={18} />, text: "Get Involved", href: "#" },
+    { icon: <Mic size={18} />, text: "Echoes", href: "#" },
   ];
 
   return (
@@ -173,8 +191,15 @@ export default function Footer() {
       </div>
 
       {/* Bottom bar */}
-      <div className="border-t border-gray-200 py-6 text-center text-gray-500 text-sm">
-        © {new Date().getFullYear()} Amadu Massally. All rights reserved.
+      <div className="border-top border-t border-gray-200">
+        <div className="max-w-7xl mx-auto px-6 py-6 flex flex-col md:flex-row items-center justify-between text-gray-500 text-sm">
+          <div className="order-2 md:order-1 mt-2 md:mt-0 text-center md:text-left">
+            © 2025 Amadu Massally. All rights reserved.
+          </div>
+          <div className="order-1 md:order-2 text-center md:text-right">
+            Design and Development by <span className="text-[#0a1a4f] font-medium">Techivance</span>
+          </div>
+        </div>
       </div>
     </footer>
   );
@@ -193,15 +218,26 @@ function FooterHeading({ children }: { children: React.ReactNode }) {
 function FooterLink({
   icon,
   text,
+  href = "#",
+  external = false,
 }: {
   icon: React.ReactNode;
   text: string;
+  href?: string;
+  external?: boolean;
 }) {
+  const base =
+    "flex items-center gap-2 text-black transition-colors duration-200 hover:text-[#0a1a4f]";
+  if (external) {
+    return (
+      <a href={href} target="_blank" rel="noopener noreferrer" className={base}>
+        <span className="shrink-0">{icon}</span>
+        <span className="truncate">{text}</span>
+      </a>
+    );
+  }
   return (
-    <a
-      href="#"
-      className="flex items-center gap-2 text-black transition-colors duration-200 hover:text-[#0a1a4f]"
-    >
+    <a href={href} className={base}>
       <span className="shrink-0">{icon}</span>
       <span className="truncate">{text}</span>
     </a>
@@ -209,7 +245,13 @@ function FooterLink({
 }
 
 /* Mobile accordion section (no JS) */
-function AccordionSection({ title, children }: { title: string; children: React.ReactNode }) {
+function AccordionSection({
+  title,
+  children,
+}: {
+  title: string;
+  children: React.ReactNode;
+}) {
   return (
     <details className="group rounded-lg border border-gray-200 bg-white">
       <summary className="flex w-full items-center justify-between cursor-pointer select-none list-none px-4 py-3">

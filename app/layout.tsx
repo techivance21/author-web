@@ -1,7 +1,11 @@
 import type { Metadata } from "next";
 import { Playfair_Display, Inter } from "next/font/google";
 import { jakarta, cormorant } from "./font";
-import "./globals.css"
+import "./globals.css";
+
+// ⬇️ Add your components (adjust paths if needed)
+import Navbar from "./components/Navbar";
+import Footer from "./components/Footer";
 
 // Elegant serif for headings
 const playfair = Playfair_Display({
@@ -34,11 +38,11 @@ export const metadata: Metadata = {
     title: "Amadu Massally | Author & Visionary",
     description:
       "Explore the official website of Amadu Massally. Learn about his five books, download free PDFs, and connect with his story.",
-    url: "https://www.amadumassally.com", // replace with live domain
+    url: "https://www.amadumassally.com",
     siteName: "Amadu Massally",
     images: [
       {
-        url: "/og-image.jpg", // Add an OG image later in public/
+        url: "/og-image.jpg",
         width: 1200,
         height: 630,
         alt: "Amadu Massally Author Website",
@@ -62,9 +66,14 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en" className={`${playfair.variable} ${inter.variable} ${jakarta.variable} ${cormorant.variable}`}>
+    <html
+      lang="en"
+      className={`${playfair.variable} ${inter.variable} ${jakarta.variable} ${cormorant.variable}`}
+    >
       <body className="bg-white text-gray-900 antialiased">
+        <Navbar />
         {children}
+        <Footer />
       </body>
     </html>
   );

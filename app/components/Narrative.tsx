@@ -1,8 +1,9 @@
-"use client";
+"use client";  
 
 import { motion } from "framer-motion";
 import Image from "next/image";
 import { BookOpen, Mic, Compass } from "lucide-react";
+import Link from "next/link"; // ⬅️ added for internal links
 
 export default function Narrative() {
   const primaryColor = "#3B82F6"; // brighter blue for contrast
@@ -158,8 +159,30 @@ function BookCard({
         )}
 
         <div className="mt-5 flex flex-wrap justify-center gap-3">
-          <PrimaryButton>{isComing ? "Pre-Order / Learn More" : "Buy Now"}</PrimaryButton>
-          <PrimaryButton>Subscribe</PrimaryButton>
+          {/* ✅ Linked buttons per your instructions */}
+          {isComing ? (
+            <>
+              {/* Pre-Order / Learn More → /books */}
+              <Link href="/books">
+                <PrimaryButton>Pre-Order / Learn More</PrimaryButton>
+              </Link>
+              {/* Subscribe → /contact */}
+              <Link href="/contact">
+                <PrimaryButton>Subscribe</PrimaryButton>
+              </Link>
+            </>
+          ) : (
+            <>
+              {/* Buy Now → /books */}
+              <Link href="/books">
+                <PrimaryButton>Buy Now</PrimaryButton>
+              </Link>
+              {/* Subscribe → /contact */}
+              <Link href="/contact">
+                <PrimaryButton>Subscribe</PrimaryButton>
+              </Link>
+            </>
+          )}
         </div>
       </div>
 

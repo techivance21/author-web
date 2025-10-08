@@ -2,6 +2,7 @@
 
 import { useState, useEffect } from "react";
 import Image from "next/image";
+import Link from "next/link";
 import { motion, AnimatePresence } from "framer-motion";
 
 const slides = [
@@ -69,15 +70,19 @@ export default function Unity() {
             <p className="text-white/90 mb-6 leading-relaxed text-base md:text-lg font-sans">
               {slides[index].text}
             </p>
-            <motion.button
-              whileHover={{ scale: 1.04 }}
-              whileTap={{ scale: 0.97 }}
-              className="inline-flex items-center justify-center rounded-full px-6 py-2.5 md:px-7 md:py-3 
-                         bg-[#0a1a4f] hover:bg-[#061033] text-white font-sans font-medium text-sm md:text-base 
-                         shadow-md hover:shadow-lg transition-colors duration-300 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-white/60"
-            >
-              {slides[index].button}
-            </motion.button>
+
+            {/* Linked to /contact for both slides */}
+            <Link href="/contact" legacyBehavior>
+              <motion.a
+                whileHover={{ scale: 1.04 }}
+                whileTap={{ scale: 0.97 }}
+                className="inline-flex items-center justify-center rounded-full px-6 py-2.5 md:px-7 md:py-3 
+                           bg-[#0a1a4f] hover:bg-[#061033] text-white font-sans font-medium text-sm md:text-base 
+                           shadow-md hover:shadow-lg transition-colors duration-300 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-white/60"
+              >
+                {slides[index].button}
+              </motion.a>
+            </Link>
           </motion.div>
         </AnimatePresence>
       </div>

@@ -2,6 +2,7 @@
 
 import { motion } from "framer-motion";
 import { useMemo } from "react";
+import Link from "next/link";
 
 export default function Illuminate() {
   // stars and glows
@@ -125,11 +126,14 @@ export default function Illuminate() {
           className="mt-10 space-y-4"
         >
           <div className="flex flex-col sm:flex-row justify-center gap-3">
-            <ThemeButton text="Subscribe for Bonus Features" />
-            <ThemeButton text="Download Sample Chapter" />
+            {/* Subscribe for Bonus Features → /contact */}
+            <ThemeButton text="Subscribe for Bonus Features" href="/contact" />
+            {/* Renamed + linked to /blogs */}
+            <ThemeButton text="Explore Articles & Blogs" href="/blogs" />
           </div>
           <div>
-            <ThemeButton text="Buy Now" />
+            {/* Buy Now → /books */}
+            <ThemeButton text="Buy Now" href="/books" />
           </div>
         </motion.div>
       </div>
@@ -142,21 +146,27 @@ export default function Illuminate() {
 function ThemeButton({
   text,
   small = false,
+  href,
 }: {
   text: string;
   small?: boolean;
+  href?: string;
 }) {
-  return (
-    <button
-      className={`relative inline-flex items-center justify-center 
+  const classes = `relative inline-flex items-center justify-center 
                  ${small ? "px-5 py-2 text-sm" : "px-6 py-2.5 text-sm md:text-base"} 
                  rounded-full font-medium text-white font-sans
                  bg-[#0a1a4f] border border-[#0a1a4f]
                  transition-all duration-300 group 
                  hover:bg-[#061033] hover:border-[#061033]
-                 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-white/60`}
-    >
-      {text}
-    </button>
-  );
+                 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-white/60`;
+
+  if (href) {
+    return (
+      <Link href={href} className={classes}>
+        {text}
+      </Link>
+    );
+  }
+
+  return <button className={classes}>{text}</button>;
 }

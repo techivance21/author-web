@@ -7,7 +7,7 @@ import { motion } from "framer-motion";
  * Theme tokens
  */
 const NAVY = "#0A1A4F";
-const NAVY_HOVER = "#0B205E";
+
 
 export default function Social() {
   return (
@@ -99,7 +99,8 @@ export default function Social() {
             his life to repairing cultural fractures and reconnecting families,
             traditions, and histories across continents.
           </p>
-          <PrimaryButton as="button">
+          {/* 🔗 Link to /about */}
+          <PrimaryButton as="a" href="/about">
             Book Amadu Massally for a Keynote or Workshop
           </PrimaryButton>
         </motion.div>
@@ -141,7 +142,7 @@ export default function Social() {
           ))}
         </motion.div>
 
-        {/* Bottom CTA (same navy as all buttons) */}
+        {/* Bottom CTA */}
         <motion.div
           initial={{ opacity: 0, filter: "blur(4px)" }}
           whileInView={{ opacity: 1, filter: "blur(0px)" }}
@@ -149,7 +150,10 @@ export default function Social() {
           transition={{ duration: 0.7, delay: 0.15 }}
           className="text-center"
         >
-          <PrimaryButton as="button">Explore Offerings</PrimaryButton>
+          {/* 🔗 Link to /blogs and label updated */}
+          <PrimaryButton as="a" href="/blogs">
+            Explore Articles & Blogs
+          </PrimaryButton>
         </motion.div>
       </div>
     </section>
@@ -185,19 +189,6 @@ function PrimaryButton({
     "focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-white/70 " +
     "transition";
   const size = "px-7 md:px-8 py-3 text-[clamp(0.95rem,2vw,1rem)]";
-  const color = `bg-[${NAVY}] hover:bg-[${NAVY_HOVER}] text-white`;
-
-  // Because Tailwind can’t read dynamic color strings in className reliably,
-  // we apply stable classes and add exact brand colors via inline style:
-  const classes = `${base} ${size} bg-[${NAVY}] hover:bg-[${NAVY_HOVER}] text-white`;
-
-  const style = {
-    backgroundColor: NAVY,
-  } as React.CSSProperties;
-
-  const hoverStyle = {
-    // handled via class hover:bg-... fallback + style on mouse events if needed
-  };
 
   if (as === "a") {
     return (
@@ -205,7 +196,7 @@ function PrimaryButton({
         whileHover={{ scale: 1.02 }}
         href={href}
         className={`${base} ${size} text-white`}
-        style={style}
+        style={{ backgroundColor: NAVY }}
       >
         {children}
         <span className="ml-2">→</span>
@@ -214,7 +205,7 @@ function PrimaryButton({
   }
 
   return (
-    <button type="button" className={`${base} ${size} text-white`} style={style}>
+    <button type="button" className={`${base} ${size} text-white`} style={{ backgroundColor: NAVY }}>
       {children}
       <span className="ml-2">→</span>
     </button>
