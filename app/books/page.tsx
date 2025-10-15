@@ -27,7 +27,7 @@ function HeadingHover({
   );
 }
 
-/* Button that can link */
+/* Button that can link (uses CSS variable for brand color to keep Tailwind happy) */
 function ThemeButton({
   href,
   children,
@@ -40,10 +40,15 @@ function ThemeButton({
   external?: boolean;
 }) {
   const base =
-    `inline-flex items-center justify-center rounded-full px-6 py-2.5 text-sm font-medium
-     bg-[${BLUE}] text-white border border-transparent
-     hover:bg-white hover:text-[${BLUE}] hover:border-[${BLUE}]
-     transition-colors`;
+    "inline-flex items-center justify-center rounded-full px-6 py-2.5 text-sm font-medium " +
+    "border transition-colors";
+
+  const cls =
+    `${base} ${className} ` +
+    "bg-[var(--brand)] text-white border-transparent " +
+    "hover:bg-white hover:text-[var(--brand)] hover:border-[var(--brand)]";
+
+  const style = { ["--brand" as any]: BLUE };
 
   if (href) {
     if (external) {
@@ -52,19 +57,24 @@ function ThemeButton({
           href={href}
           target="_blank"
           rel="noopener noreferrer"
-          className={`${base} ${className}`}
+          className={cls}
+          style={style}
         >
           {children}
         </a>
       );
     }
     return (
-      <Link href={href} className={`${base} ${className}`}>
+      <Link href={href} className={cls} style={style}>
         {children}
       </Link>
     );
   }
-  return <button className={`${base} ${className}`}>{children}</button>;
+  return (
+    <button className={cls} style={style}>
+      {children}
+    </button>
+  );
 }
 
 export default function BooksPage() {
@@ -82,19 +92,33 @@ export default function BooksPage() {
         />
         <div className="absolute inset-0 bg-black/45" />
         <div className="relative z-10 max-w-4xl mx-auto px-6">
-          <h1 className="text-3xl md:text-5xl font-bold text-white mb-4">
-            <HeadingHover>Cultural Journeys Through Pages</HeadingHover>
+          <h1 className="text-3xl md:text-5xl font-bold text-white mb-3">
+            <HeadingHover>The Gullah Geechee Trilogy</HeadingHover>
           </h1>
+
+          {/* pill/badge line */}
+          <div className="mb-4">
+            <span
+              className="inline-flex items-center gap-2 rounded-full border border-white/40
+               bg-white/10 text-white/95 px-3.5 py-1 text-[0.9rem] md:text-base
+               shadow-sm backdrop-blur-sm"
+            >
+              <span className="inline-block w-2 h-2 rounded-full bg-white/90" />
+              Three books. One covenant of memory.
+            </span>
+          </div>
+
+          {/* sub-heading */}
           <p className="text-white/90 text-base md:text-lg leading-relaxed">
-            Discover vibrant tales and heritage treasures that unify past and
-            present, nurturing connections with the African Diaspora.
+            A living archive that carries the story of land, language, and legacy from
+            Africa to the Lowcountry and back again.
           </p>
         </div>
       </section>
 
       {/* ====================== FEATURED BOOKS ====================== */}
       <section className="max-w-6xl mx-auto py-16 md:py-20 px-6 space-y-16">
-        {/* Book 1 — text LEFT, image RIGHT (smaller cover) */}
+        {/* Book 1 — text LEFT, image RIGHT */}
         <div className="grid md:grid-cols-2 gap-12 items-center">
           <motion.div
             initial={{ opacity: 0, x: -16 }}
@@ -108,13 +132,16 @@ export default function BooksPage() {
               </HeadingHover>
             </h2>
             <p className="font-medium text-neutral-800 mb-2">
-              A People Dispersed. A Culture Reassembled. A Story Returned.
+              Where rivers remember and the ocean echoes in tongues.
+            </p>
+            <p className="text-neutral-700 leading-relaxed mb-3">
+              This flagship volume reframes the origins of Gullah Geechee
+              culture through the eyes of Africa itself.
             </p>
             <p className="text-neutral-700 leading-relaxed mb-5">
-              More than a history—it’s a reawakening. Trace the journey from
-              the rice fields of Sierra Leone to the praise houses of the Sea
-              Islands: language braided, kin reassembled, and covenant
-              remembered.
+              It traces the brilliance, not the bondage—from the Rice Coast to
+              the Carolina Lowcountry—revealing how a dispersed people
+              reassembled their world through language, land, and faith.
             </p>
             <ThemeButton href={AMAZON_URL} external>
               Learn More
@@ -137,7 +164,7 @@ export default function BooksPage() {
           </motion.div>
         </div>
 
-        {/* Book 2 — image LEFT, text RIGHT (smaller cover) */}
+        {/* Book 2 — image LEFT, text RIGHT */}
         <div className="grid md:grid-cols-2 gap-12 items-center">
           <motion.div
             initial={{ opacity: 0, x: -16 }}
@@ -148,7 +175,7 @@ export default function BooksPage() {
           >
             <Image
               src="/book2.png"
-              alt="Gambozo’s Storytelling"
+              alt="Gambozo’s Storytelling — A Saga Within the Saga"
               width={220}
               height={310}
               className="rounded-xl shadow-[0_12px_30px_rgba(0,0,0,0.15)] object-contain"
@@ -161,15 +188,19 @@ export default function BooksPage() {
             transition={{ duration: 0.45 }}
           >
             <h2 className="text-2xl md:text-3xl font-bold mb-2">
-              <HeadingHover>Gambozo’s Storytelling</HeadingHover>
+              <HeadingHover>Gambozo’s Storytelling — A Saga Within the Saga</HeadingHover>
             </h2>
             <p className="font-medium text-neutral-800 mb-2">
-              The hush became a rhythm; the rhythm became a guide.
+              The fire that carried memory through the hush.
+            </p>
+            <p className="text-neutral-700 leading-relaxed mb-3">
+              Told through the voice of the griot Gambozo, this volume brings
+              oral history to life.
             </p>
             <p className="text-neutral-700 leading-relaxed mb-5">
-              Gather close to the griot fire. Through trickster wit, ring
-              shouts, and coded spirituals, Gambozo carries memory across
-              oceans—speaking in the voice of those who refused to be erased.
+              It is the heartbeat within the larger Saga—a tapestry of ancestral
+              voices, children’s laughter, and whispered songs that outlived the
+              auction block.
             </p>
             <ThemeButton href={AMAZON_URL} external>
               Learn More
@@ -177,7 +208,7 @@ export default function BooksPage() {
           </motion.div>
         </div>
 
-        {/* Book 3 — image RIGHT, text LEFT (smaller cover) */}
+        {/* Book 3 — image RIGHT, text LEFT */}
         <div className="grid md:grid-cols-2 gap-12 items-center">
           <motion.div
             initial={{ opacity: 0, x: -16 }}
@@ -187,20 +218,28 @@ export default function BooksPage() {
             className="order-2 md:order-1"
           >
             <h2 className="text-2xl md:text-3xl font-bold mb-2">
-              <HeadingHover>Diaspora Scavenger</HeadingHover>
+              <HeadingHover>Diaspora Scavenger — Letters, Ledgers &amp; Ghost Routes</HeadingHover>
             </h2>
             <p className="font-medium text-neutral-800 mb-2">
-              Letters, Ledgers &amp; Ghost Routes{" "}
+              Mapping the unseen threads of the trade{" "}
               <span className="ml-2 rounded-full border border-[#0A2342] px-2 py-0.5 text-xs text-[#0A2342]">
                 Coming Soon
               </span>
             </p>
-            <p className="text-neutral-700 leading-relaxed mb-5">
-              A field notebook for the scattered—tracing names lost to
-              manifests and whispers. Follow paper trails, praise-house
-              testimony, and remembered crossings to redraw the routes home.
+            <p className="text-neutral-700 leading-relaxed mb-3">
+              Part investigative history, part act of re-memory, <em>Diaspora
+              Scavenger</em> uncovers the paper trail of the transatlantic slave
+              trade—ships, merchants, and families entangled in its wake.
             </p>
-            <ThemeButton href="/contact">Notify Me</ThemeButton>
+            <p className="text-neutral-700 leading-relaxed mb-5">
+              It turns ledgers into testimony and archives into living maps of
+              return.
+            </p>
+
+            <div className="flex flex-wrap gap-3">
+              <ThemeButton href="/books">Pre-Order / Learn More</ThemeButton>
+              <ThemeButton href="/contact">Subscribe</ThemeButton>
+            </div>
           </motion.div>
           <motion.div
             initial={{ opacity: 0, x: 16 }}
@@ -232,22 +271,29 @@ export default function BooksPage() {
         <div className="absolute inset-0 bg-black/45" />
 
         <div className="relative max-w-6xl mx-auto px-6 space-y-12">
-          {/* About with AUTHOR IMAGE (author2.png), trimmed height, aligned with text */}
+          {/* About with AUTHOR IMAGE */}
           <div className="grid md:grid-cols-2 gap-10 items-start">
             <div className="text-white space-y-3">
               <h2 className="text-2xl md:text-3xl font-bold">
                 <HeadingHover>About the Author</HeadingHover>
               </h2>
               <h3 className="text-lg font-semibold">Amadu Massally</h3>
-              <p className="text-white/90">
-                Cultural bridge-builder and steward of return. Rooted in Sierra
-                Leone with deep ties across the Gullah Geechee corridor, Amadu
-                works to repair fractures and reconnect families, traditions,
-                and memory across oceans.
+
+              {/* Caption / headline */}
+              <p className="text-white/85 italic">
+                Amadu Massally on ancestral soil, retracing the routes between Sierra Leone and the Lowcountry.
               </p>
+
+              {/* Body */}
+              <p className="text-white/90">
+                Amadu Massally is a cultural bridge-builder and storyteller whose work reconnects Sierra Leone and the Gullah Geechee Corridor through memory, scholarship, and lived experience. His trilogy transforms history into testimony—inviting readers, educators, and descendants to join in the work of repair.
+              </p>
+
+              {/* CTA */}
+              <ThemeButton href="/about">Read Full Bio →</ThemeButton>
             </div>
 
-            {/* Author Photo — smaller height to align with text block */}
+            {/* Author Photo */}
             <div className="rounded-2xl p-3 bg-white/10 backdrop-blur-md border border-white/25 w-full max-w-sm mx-auto md:mx-0">
               <div className="relative w-full h-[320px] md:h-[360px] overflow-hidden rounded-xl">
                 <Image
@@ -260,18 +306,20 @@ export default function BooksPage() {
             </div>
           </div>
 
-          {/* Who is this book for? glass cards */}
+          {/* Who is this book for? */}
           <div>
             <h2 className="text-2xl md:text-3xl font-bold text-white mb-6">
-              <HeadingHover>Who Is This Book For?</HeadingHover>
+              <HeadingHover>For Everyone Who Believes Memory Still Has Work To Do</HeadingHover>
             </h2>
+
             <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-5">
               {[
-                "For the passionate teacher who widens the lens of history.",
-                "For the student who senses the past is not a stranger.",
-                "For the descendant tracing memory through blood, soil, and syllable.",
-                "For the elder who knows stories live beyond pages.",
-                "For the reader who understands this is not just history — it is return.",
+                "Descendants & Heritage Seekers",
+                "Educators & Cultural Scholars",
+                "Faith & Ancestral Communities",
+                "Students of African Diaspora History",
+                "Keepers of Land, Memory, and Legacy",
+                "Cultural Institutions & Change-Makers",
               ].map((t, idx) => (
                 <div
                   key={idx}
@@ -281,28 +329,25 @@ export default function BooksPage() {
                 </div>
               ))}
             </div>
+
+            {/* Supporting line */}
+            <p className="mt-4 text-white/90">
+              Each book speaks to a different part of the diaspora journey—from rupture to reassembly, from hush to rhythm.
+            </p>
           </div>
 
           {/* Callout copy */}
           <div className="text-center text-white max-w-3xl mx-auto">
             <h3 className="text-xl md:text-2xl font-semibold">
-              <HeadingHover>
-                This is not just a book. It is a return.
-              </HeadingHover>
+              <HeadingHover>Three Books. One Living Covenant.</HeadingHover>
             </h3>
             <p className="mt-3 text-white/90">
-              <span className="font-medium">
-                The Gullah Geechee Saga: Through African Eyes
-              </span>{" "}
-              is available now in print and digital formats. More than a
-              historical account, it is a bridge—reconnecting descendants,
-              reshaping education, and restoring memory. Order your copy and
-              trace the unbroken thread from the rice fields of Sierra Leone to
-              the praise houses of the Sea Islands, and back again.
+              Together, these works form a single arc of remembrance—carrying the story full circle from Africa to the Americas and back again.
+              They are not just books, but portals—living witnesses that call us to remember, re-root, and rebuild.
             </p>
           </div>
 
-          {/* Three book cards UNDER the callout (glass, on same bg). Smaller covers, object-contain */}
+          {/* Three book cards UNDER the callout */}
           <div className="grid sm:grid-cols-3 gap-6 pt-2">
             {[
               { src: "/book1.png", line: "Saga: testimony braided with return." },
