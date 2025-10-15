@@ -8,26 +8,26 @@ const upcomingEvents = [
   {
     id: 1,
     title: "Gullah Heritage Night",
-    date: "October 12, 2025",
-    location: "Charleston, SC",
+    date: "Oct 12 2025",
+    location: "location: Charleston, SC",
     description:
       "An evening of live drumming, traditional cuisine, and oral history celebrating the enduring Gullah culture.",
   },
   {
     id: 2,
     title: "Sea Island Storytelling",
-    date: "November 2, 2025",
-    location: "Savannah, GA",
+    date: "Nov 2 2025",
+    location: "location: Savannah, GA",
     description:
       "Local elders and artists share ancestral tales and music that shaped the Sea Islands’ legacy.",
   },
   {
     id: 3,
     title: "Roots & Rhythm Workshop",
-    date: "December 15, 2025",
-    location: "Hilton Head, SC",
+    date: "Dec 15 2025",
+    location: "location Hilton Head, SC",
     description:
-      "Hands-on dance and percussion sessions exploring the African rhythms behind Lowcountry traditions.",
+      "Hands-on dance and percussion sessions exploring African rhythms behind Lowcountry traditions.",
   },
 ];
 
@@ -67,7 +67,7 @@ export default function Event() {
           viewport={{ once: true, amount: 0.3 }}
           transition={{ duration: 0.7, delay: 0.05 }}
           className="mx-auto max-w-4xl text-center rounded-2xl border border-white/15
-                     bg-white/10 backdrop-blur p-6 sm:p-8 md:p-10 shadow-2xl"
+                     bg-white/10 backdrop-blur p-6 sm:p-8 md:py-10 md:px-10 shadow-2xl"
         >
           <h2 className="font-display text-[clamp(1.5rem,3.2vw,2.25rem)] leading-tight mb-3">
             A Coven of Heirs
@@ -76,11 +76,11 @@ export default function Event() {
           <div className="font-sans text-white/90 text-[clamp(1rem,2.2vw,1.125rem)]">
             <p className="mb-1">
               <span className="text-white/75">Date:</span>{" "}
-              <span className="font-semibold">September 30, 2025</span>
+              <span className="font-semibold">October 18, 2025</span>
             </p>
             <p className="mb-5">
               <span className="text-white/75">Location:</span>{" "}
-              <span className="font-semibold">Atlanta, GA</span>
+              <span className="font-semibold">Beaufort, SC</span>
             </p>
           </div>
 
@@ -89,9 +89,9 @@ export default function Event() {
             descendants and allies to honor shared histories.
           </p>
 
-          {/* Featured button → Blogs */}
+          {/* Featured button → changed label only */}
           <PrimaryButton as="a" href="/blogs">
-            Read Articles
+            Read About the Movement
           </PrimaryButton>
         </motion.section>
 
@@ -105,6 +105,16 @@ export default function Event() {
         >
           Upcoming Events
         </motion.h3>
+
+        {/* Added headline + subline (content only) */}
+        <div className="text-center">
+          <h4 className="font-display text-[clamp(1.1rem,2.4vw,1.4rem)]">
+            Roots in Motion
+          </h4>
+          <p className="font-sans text-white/85 text-[clamp(0.95rem,2vw,1.05rem)]">
+            Gatherings that carry the covenant from the page to the people.
+          </p>
+        </div>
 
         <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-6 sm:gap-8">
           {upcomingEvents.map((event, i) => (
@@ -120,6 +130,7 @@ export default function Event() {
               <h4 className="font-display text-[clamp(1.1rem,2.2vw,1.35rem)] leading-tight mb-2">
                 {event.title}
               </h4>
+              {/* Keeping original order (date line first, then location line) */}
               <p className="font-sans text-white/90">{event.date}</p>
               <p className="font-sans text-white/80 mb-3">{event.location}</p>
               <p className="font-sans text-sm text-white/75 mb-5">

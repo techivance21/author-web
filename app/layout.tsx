@@ -6,6 +6,7 @@ import "./globals.css";
 // ⬇️ Add your components (adjust paths if needed)
 import Navbar from "./components/Navbar";
 import Footer from "./components/Footer";
+import LayoutMetrics from "./components/LayoutMetrics";
 
 // Elegant serif for headings
 const playfair = Playfair_Display({
@@ -73,6 +74,7 @@ export default function RootLayout({
       <body className="bg-white text-gray-900 antialiased">
         <Navbar />
         {children}
+        <LayoutMetrics />
         <Footer />
       </body>
     </html>

@@ -8,7 +8,6 @@ import { motion } from "framer-motion";
  */
 const NAVY = "#0A1A4F";
 
-
 export default function Social() {
   return (
     <section className="relative w-full py-20 text-white overflow-hidden">
@@ -105,6 +104,16 @@ export default function Social() {
           </PrimaryButton>
         </motion.div>
 
+        {/* ➕ Added headings after the button (content only) */}
+        <div className="text-center space-y-2">
+          <h3 className="font-display text-[clamp(1.8rem,3.8vw,3rem)]">
+            Events & Speaking
+          </h3>
+          <p className="font-display text-[clamp(1.05rem,2.6vw,1.35rem)]">
+            From Story to Stage
+          </p>
+        </div>
+
         {/* Two cards row */}
         <motion.div
           initial={{ opacity: 0, filter: "blur(6px)" }}
@@ -113,33 +122,53 @@ export default function Social() {
           transition={{ duration: 0.7, delay: 0.1 }}
           className="grid grid-cols-1 md:grid-cols-2 gap-10"
         >
-          {[2, 3].map((num) => (
-            <HoverCard key={num}>
-              <div className="relative aspect-[3/2]">
-                <Image
-                  src={`/social${num}.png`}
-                  alt={`Events and Speaking ${num}`}
-                  fill
-                  sizes="(min-width: 1280px) 560px, (min-width: 768px) 520px, 100vw"
-                  className="object-cover select-none"
-                  quality={90}
-                />
-              </div>
-              <div className="backdrop-blur-md bg-white/10 border-t border-white/20 p-6 text-center">
-                <h3 className="font-display text-[clamp(1.25rem,2.6vw,1.6rem)] font-semibold mb-3">
-                  Events & Speaking
-                </h3>
-                <p className="font-sans text-[clamp(0.98rem,2.1vw,1.1rem)] leading-relaxed text-white/90">
-                  Amadu Massally is available for keynote talks, storytelling
-                  sessions, panel discussions, educator workshops, and cultural
-                  festivals—both in-person and virtual. With deep roots in Sierra
-                  Leone and long-standing relationships across the Gullah Geechee
-                  corridor, he brings not only research but lived experience and
-                  ancestral memory to each engagement.
-                </p>
-              </div>
-            </HoverCard>
-          ))}
+          {/* Left Card: Keynotes & Panels */}
+          <HoverCard>
+            <div className="relative aspect-[3/2]">
+              <Image
+                src="/social2.png"
+                alt="Events and Speaking 2"
+                fill
+                sizes="(min-width: 1280px) 560px, (min-width: 768px) 520px, 100vw"
+                className="object-cover select-none"
+                quality={90}
+              />
+            </div>
+            <div className="backdrop-blur-md bg-white/10 border-t border-white/20 p-6 text-center">
+              <h3 className="font-display text-[clamp(1.25rem,2.6vw,1.6rem)] font-semibold mb-3">
+                Keynotes & Panels
+              </h3>
+              <p className="font-sans text-[clamp(0.98rem,2.1vw,1.1rem)] leading-relaxed text-white/90">
+                Amadu Massally is available for keynote talks, storytelling
+                sessions, and panel discussions that weave research and lived
+                memory into dialogue.
+              </p>
+            </div>
+          </HoverCard>
+
+          {/* Right Card: Cultural Gatherings */}
+          <HoverCard>
+            <div className="relative aspect-[3/2]">
+              <Image
+                src="/social3.png"
+                alt="Events and Speaking 3"
+                fill
+                sizes="(min-width: 1280px) 560px, (min-width: 768px) 520px, 100vw"
+                className="object-cover select-none"
+                quality={90}
+              />
+            </div>
+            <div className="backdrop-blur-md bg-white/10 border-t border-white/20 p-6 text-center">
+              <h3 className="font-display text-[clamp(1.25rem,2.6vw,1.6rem)] font-semibold mb-3">
+                Cultural Gatherings
+              </h3>
+              <p className="font-sans text-[clamp(0.98rem,2.1vw,1.1rem)] leading-relaxed text-white/90">
+                Engage Amadu for educator workshops, festivals, or community
+                celebrations that honor ancestral resilience through music,
+                dance, and story.
+              </p>
+            </div>
+          </HoverCard>
         </motion.div>
 
         {/* Bottom CTA */}
@@ -199,15 +228,23 @@ function PrimaryButton({
         style={{ backgroundColor: NAVY }}
       >
         {children}
-        <span className="ml-2">→</span>
+        <span className="ml-2" aria-hidden>
+          →
+        </span>
       </motion.a>
     );
   }
 
   return (
-    <button type="button" className={`${base} ${size} text-white`} style={{ backgroundColor: NAVY }}>
+    <button
+      type="button"
+      className={`${base} ${size} text-white`}
+      style={{ backgroundColor: NAVY }}
+    >
       {children}
-      <span className="ml-2">→</span>
+      <span className="ml-2" aria-hidden>
+        →
+      </span>
     </button>
   );
 }

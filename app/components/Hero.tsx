@@ -18,7 +18,7 @@ export default function Hero() {
       <div className="absolute inset-0 bg-black/60" />
 
       {/* Content container */}
-      <div className="relative z-10 flex h-full items-center justify-center">
+      <div className="relative z-10 flex h-full items-center justify-center mt-8">
         <div className="mx-auto max-w-4xl px-4 sm:px-6 lg:px-8 text-center">
           {/* Brand */}
           <motion.h1
