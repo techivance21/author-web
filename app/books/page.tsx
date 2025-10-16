@@ -4,6 +4,7 @@ import Image from "next/image";
 import Link from "next/link";
 import { Star } from "lucide-react";
 import { motion } from "framer-motion";
+import type { CSSProperties } from "react"; // ✨ added
 
 const BLUE = "#0A2342";
 const AMAZON_URL =
@@ -48,7 +49,9 @@ function ThemeButton({
     "bg-[var(--brand)] text-white border-transparent " +
     "hover:bg-white hover:text-[var(--brand)] hover:border-[var(--brand)]";
 
-  const style = { ["--brand" as any]: BLUE };
+  // ✅ type-safe CSS custom property (no 'any')
+  type BrandStyle = CSSProperties & { "--brand"?: string };
+  const style: BrandStyle = { "--brand": BLUE };
 
   if (href) {
     if (external) {
