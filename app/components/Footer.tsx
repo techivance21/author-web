@@ -58,16 +58,16 @@ export default function Footer() {
   ];
 
   const discover = [
-    { icon: <BookOpen size={18} aria-hidden />, text: "Cultural Education", href: "#" },
-    { icon: <Compass size={18} aria-hidden />, text: "Heritage Journeys", href: "#" },
-    { icon: <Mic size={18} aria-hidden />, text: "Speaking Engagements", href: "#" },
-    { icon: <Users size={18} aria-hidden />, text: "Diaspora Scavenger", href: "#" },
+    { icon: <BookOpen size={18} aria-hidden />, text: "Cultural Education", href: "/" },
+    { icon: <Compass size={18} aria-hidden />, text: "Heritage Journeys", href: "/events" },
+    { icon: <Mic size={18} aria-hidden />, text: "Speaking Engagements", href: "/events" },
+    { icon: <Users size={18} aria-hidden />, text: "Diaspora Scavenger", href: "/books" },
   ];
 
   const explore = [
-    { icon: <BookOpen size={18} aria-hidden />, text: "The Book", href: "#" },
-    { icon: <Map size={18} aria-hidden />, text: "Events & Bookings", href: "#" },
-    { icon: <Users size={18} aria-hidden />, text: "Get Involved", href: "#" },
+    { icon: <BookOpen size={18} aria-hidden />, text: "The Book", href: "/books" },
+    { icon: <Map size={18} aria-hidden />, text: "Events & Bookings", href: "/events" },
+    { icon: <Users size={18} aria-hidden />, text: "Get Involved", href: "/contact" },
     { icon: <Mic size={18} aria-hidden />, text: "Echoes", href: "#" },
   ];
 

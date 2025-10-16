@@ -118,7 +118,7 @@ const books: Book[] = [
   {
     title: "Gullah Geechee Saga",
     img: "/book1.png",
-    href: "/books/gullah-geechee-saga",
+    href: "/books",
     rating: 5,
     description:
       "A sweeping chronicle tracing ancestral lines, sacred rituals, and unbroken love between Sierra Leone and the Sea Islands.",
@@ -126,7 +126,7 @@ const books: Book[] = [
   {
     title: "Gambozo's Storytelling",
     img: "/book2.png",
-    href: "/books/gambozos-storytelling",
+    href: "/books",
     rating: 5,
     description:
       "An intimate portrait of the griots, song keepers, and farmers who steward Gullah Geechee language across generations.",
@@ -417,27 +417,28 @@ export default function AboutPage() {
                   <h4 className="text-xl font-semibold text-black">{book.title}</h4>
                   <p className="text-sm text-neutral-600 leading-relaxed">{book.description}</p>
                   {book.comingSoon ? (
-                    <p className="text-sm font-medium italic text-neutral-500">
-                      Forthcoming release &mdash; join the list for launch news.
-                    </p>
+                    <>
+                      <p className="text-sm font-medium italic text-neutral-500">
+                        Forthcoming release &mdash; join the list for launch news.
+                      </p>
+                      <span className="mt-2 inline-flex items-center justify-center rounded-full bg-neutral-200 px-5 py-2 text-sm font-semibold text-neutral-500">
+                        Coming Soon
+                      </span>
+                    </>
                   ) : (
-                    <div className="flex items-center gap-2 text-black">
-                      <Stars value={book.rating ?? 0} />
-                      <span className="text-sm font-medium">{(book.rating ?? 0).toFixed(1)}</span>
-                    </div>
+                    <>
+                      <div className="flex items-center gap-2 text-black">
+                        <Stars value={book.rating ?? 0} />
+                        <span className="text-sm font-medium">{(book.rating ?? 0).toFixed(1)}</span>
+                      </div>
+                      <Link
+                        href={book.href}
+                        className="mt-2 inline-flex items-center justify-center rounded-full bg-[#0A2342] px-5 py-2 text-sm font-semibold text-white transition hover:bg-white hover:text-[#0A2342] hover:outline hover:outline-2 hover:outline-[#0A2342]"
+                      >
+                        Explore the book
+                      </Link>
+                    </>
                   )}
-                  <Link
-                    href={book.href}
-                    className={`mt-2 inline-flex items-center justify-center rounded-full px-5 py-2 text-sm font-semibold transition ${
-                      book.comingSoon
-                        ? "bg-neutral-200 text-neutral-500"
-                        : "bg-[#0A2342] text-white hover:bg-white hover:text-[#0A2342] hover:outline hover:outline-2 hover:outline-[#0A2342]"
-                    }`}
-                    aria-disabled={book.comingSoon}
-                    tabIndex={book.comingSoon ? -1 : 0}
-                  >
-                    {book.comingSoon ? "Coming Soon" : "Explore the book"}
-                  </Link>
                 </div>
               </motion.div>
             ))}
