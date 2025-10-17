@@ -68,7 +68,7 @@ export default function Footer() {
     { icon: <BookOpen size={18} aria-hidden />, text: "The Book", href: "/books" },
     { icon: <Map size={18} aria-hidden />, text: "Events & Bookings", href: "/events" },
     { icon: <Users size={18} aria-hidden />, text: "Get Involved", href: "/contact" },
-    { icon: <Mic size={18} aria-hidden />, text: "Echoes", href: "#" },
+    { icon: <Mic size={18} aria-hidden />, text: "Echoes", href: "/echoes" },
   ];
 
   return (
