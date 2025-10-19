@@ -8,6 +8,7 @@ export type BlogPost = {
   content: string;      // full article text; render with whitespace-pre-wrap
   seoKeywords?: string[];
   image?: string;       // optional card image for listing/banner
+  contentImage?: string; // optional inline feature image shown below the hero
 };
 
 export const POSTS: BlogPost[] = [
@@ -53,6 +54,7 @@ When we return to the land with awareness, we turn memorial into movement. That�
       "Sierra Leone connection",
     ],
     image: "/blog-land.jpg",
+    contentImage: "blog-1",
   },
   {
     slug: "echoes-from-the-atlantic-graveyard",
@@ -98,6 +100,7 @@ So when the Gullah Geechee descendants stand at water’s edge and whisper, “W
       "transatlantic memory",
     ],
     image: "/blog-ocean.jpg",
+    contentImage: "blog-2",
   },
   {
     slug: "before-the-crossing-the-gullah-genesis",
@@ -140,6 +143,7 @@ Even before ships crossed, coastal traders had already developed pidgin language
       "transatlantic slave trade",
     ],
     image: "/blog-genesis.jpg",
+    contentImage: "blog-3",
   },
 ];
 

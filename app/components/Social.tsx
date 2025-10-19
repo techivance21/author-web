@@ -56,7 +56,7 @@ export default function Social() {
             <HoverCard>
               <div className="relative aspect-[4/3]">
                 <Image
-                  src="/social4.png"
+                  src="/home-image.jpg"
                   alt="Angel Oak"
                   fill
                   quality={90}

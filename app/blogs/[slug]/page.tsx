@@ -5,16 +5,20 @@ import Link from "next/link";
 import { notFound } from "next/navigation";
 import { POSTS, getPostBySlug } from "@/app/lib/posts";
 
-type Props = { params: { slug: string } };
+// 👇 params is now a Promise
+type Props = { params: Promise<{ slug: string }> };
 
 export function generateStaticParams() {
   return POSTS.map((p) => ({ slug: p.slug }));
 }
 
-export function generateMetadata({ params }: Props): Metadata {
-  const post = getPostBySlug(params.slug);
+// 👇 make it async and await params
+export async function generateMetadata({ params }: Props): Promise<Metadata> {
+  const { slug } = await params;
+  const post = getPostBySlug(slug);
   if (!post) return {};
 
+  const image = resolveImagePath(post.image);
   return {
     title: post.title,
     description: post.excerpt,
@@ -23,13 +27,13 @@ export function generateMetadata({ params }: Props): Metadata {
       title: post.title,
       description: post.excerpt,
       type: "article",
-      images: post.image ? [{ url: post.image }] : undefined,
+      images: image ? [{ url: image }] : undefined,
     },
     twitter: {
       card: "summary_large_image",
       title: post.title,
       description: post.excerpt,
-      images: post.image ? [post.image] : undefined,
+      images: image ? [image] : undefined,
     },
   };
 }
@@ -37,6 +41,17 @@ export function generateMetadata({ params }: Props): Metadata {
 const BLUE = "#0A2342";
 
 type ContentBlock = { type: "heading" | "paragraph"; content: string };
+
+function resolveImagePath(image?: string) {
+  if (!image) return undefined;
+  const trimmed = image.trim();
+  if (!trimmed) return undefined;
+  if (/^https?:\/\//i.test(trimmed)) return trimmed;
+  if (trimmed.startsWith("/")) return trimmed;
+  const normalized = trimmed.replace(/^\.?\/+/, "");
+  const hasExtension = /\.[a-z0-9]+$/i.test(normalized);
+  return `/${normalized}${hasExtension ? "" : ".jpg"}`;
+}
 
 function buildContentBlocks(text: string): ContentBlock[] {
   const lines = text.split("\n");
@@ -46,20 +61,16 @@ function buildContentBlocks(text: string): ContentBlock[] {
   const pushParagraph = () => {
     if (!paragraphBuffer.length) return;
     const paragraph = paragraphBuffer.join(" ").replace(/\s+/g, " ").trim();
-    if (paragraph) {
-      blocks.push({ type: "paragraph", content: paragraph });
-    }
+    if (paragraph) blocks.push({ type: "paragraph", content: paragraph });
     paragraphBuffer = [];
   };
 
   for (const rawLine of lines) {
     const line = rawLine.trim();
-
     if (!line) {
       pushParagraph();
       continue;
     }
-
     const words = line.split(/\s+/).length;
     const isHeadingCandidate =
       words <= 12 &&
@@ -72,15 +83,18 @@ function buildContentBlocks(text: string): ContentBlock[] {
       paragraphBuffer.push(line);
     }
   }
-
   pushParagraph();
   return blocks;
 }
 
-export default function BlogPostPage({ params }: Props) {
-  const post = getPostBySlug(params.slug);
+// 👇 make the page async and await params
+export default async function BlogPostPage({ params }: Props) {
+  const { slug } = await params;
+  const post = getPostBySlug(slug);
   if (!post) return notFound();
 
+  const heroImage = resolveImagePath(post.image);
+  const inlineImage = resolveImagePath(post.contentImage);
   const contentBlocks = buildContentBlocks(post.content);
   const firstParagraphIndex = contentBlocks.findIndex(
     (block) => block.type === "paragraph",
@@ -91,12 +105,13 @@ export default function BlogPostPage({ params }: Props) {
       <section className="relative isolate overflow-hidden bg-slate-950 text-white">
         <div className="absolute inset-0 bg-slate-950" />
         <div className="relative h-[28vh] min-h-[280px] w-full sm:h-[36vh] sm:min-h-[320px] md:h-[44vh] md:min-h-[360px] lg:h-[50vh]">
-          {post.image ? (
+          {heroImage ? (
             <Image
-              src={post.image}
+              src={heroImage}
               alt={post.title}
               fill
               priority
+              quality={96}
               sizes="100vw"
               className="object-cover object-center"
             />
@@ -109,7 +124,6 @@ export default function BlogPostPage({ params }: Props) {
             />
           )}
           <div className="absolute inset-0 bg-black/45" />
-
           <div className="relative z-10 h-full">
             <div className="mx-auto flex h-full w-full max-w-5xl items-end px-4 pb-10 pt-16 sm:px-6 sm:pb-14 sm:pt-20 lg:px-8">
               <div className="w-full">
@@ -139,6 +153,24 @@ export default function BlogPostPage({ params }: Props) {
           </div>
         </div>
       </section>
+
+      {inlineImage ? (
+        <section className="bg-slate-50">
+          <div className="mx-auto w-full max-w-4xl px-4 pb-8 pt-10 sm:px-6 md:pb-12 lg:px-8">
+            <div className="relative aspect-[4/3] overflow-hidden rounded-3xl shadow-[0_25px_55px_-35px_rgba(15,23,42,0.45)] sm:aspect-[16/10] lg:aspect-[16/9]">
+              <Image
+                src={inlineImage}
+                alt={post.title}
+                fill
+                quality={98}
+                sizes="(min-width: 1024px) 768px, (min-width: 640px) 80vw, 92vw"
+                className="object-cover"
+                priority={false}
+              />
+            </div>
+          </div>
+        </section>
+      ) : null}
 
       <section className="bg-slate-50 pb-16 pt-12 sm:pb-20 sm:pt-14 md:pb-24 md:pt-16">
         <div className="mx-auto w-full max-w-4xl px-4 sm:px-6 lg:px-8">
