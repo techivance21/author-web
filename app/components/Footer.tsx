@@ -41,7 +41,7 @@ export default function Footer() {
     {
       icon: <Mail size={18} aria-hidden />,
       text: "Connect via Email",
-      href: "mailto:amadu.massally@gmail.com",
+      href: "amadu.massally@gmail.com",
     },
     {
       icon: <Facebook size={18} aria-hidden />,

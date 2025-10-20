@@ -122,44 +122,49 @@ export default function BooksPage() {
       {/* ====================== FEATURED BOOKS ====================== */}
       <section className="max-w-6xl mx-auto py-16 md:py-20 px-6 space-y-16">
         {/* Book 1 — text LEFT, image RIGHT */}
-        <div className="grid md:grid-cols-2 gap-12 items-center">
+          <div className="grid md:grid-cols-2 gap-12 items-center">
           <motion.div
             initial={{ opacity: 0, x: -16 }}
             whileInView={{ opacity: 1, x: 0 }}
             viewport={{ once: true, amount: 0.3 }}
             transition={{ duration: 0.45 }}
+            className="order-2 md:order-1"
           >
             <h2 className="text-2xl md:text-3xl font-bold mb-2">
-              <HeadingHover>
-                The Gullah Geechee Saga: Through African Eyes
-              </HeadingHover>
+              <HeadingHover>The Gullah Geechee Saga: Through African Eyes</HeadingHover>
             </h2>
             <p className="font-medium text-neutral-800 mb-2">
               Where rivers remember and the ocean echoes in tongues.
+              <br />
+              <span className=" rounded-full border border-[#0A2342] px-2 py-0.5 text-xs text-[#0A2342]">
+                Coming Soon
+              </span>
             </p>
             <p className="text-neutral-700 leading-relaxed mb-3">
-              This flagship volume reframes the origins of Gullah Geechee
+               This flagship volume reframes the origins of Gullah Geechee
               culture through the eyes of Africa itself.
             </p>
             <p className="text-neutral-700 leading-relaxed mb-5">
-              It traces the brilliance, not the bondage—from the Rice Coast to
-              the Carolina Lowcountry—revealing how a dispersed people
+               It traces the brilliance, not the bondage from the Rice Coast to
+              the Carolina Lowcountry revealing how a dispersed people
               reassembled their world through language, land, and faith.
             </p>
-            <ThemeButton href={AMAZON_URL} external>
-              Learn More
-            </ThemeButton>
+
+            <div className="flex flex-wrap gap-3">
+              <ThemeButton href="/books">Pre-Order / Learn More</ThemeButton>
+              <ThemeButton href="/contact">Subscribe</ThemeButton>
+            </div>
           </motion.div>
           <motion.div
             initial={{ opacity: 0, x: 16 }}
             whileInView={{ opacity: 1, x: 0 }}
             viewport={{ once: true, amount: 0.3 }}
             transition={{ duration: 0.45 }}
-            className="flex justify-center"
+            className="flex justify-center order-1 md:order-2"
           >
             <Image
               src="/book1.png"
-              alt="The Gullah Geechee Saga: Through African Eyes"
+              alt="The Gullah Geechee Saga: Through African Eyes - coming soon"
               width={220}
               height={310}
               className="rounded-xl shadow-[0_12px_30px_rgba(0,0,0,0.15)] object-contain"
@@ -191,7 +196,7 @@ export default function BooksPage() {
             transition={{ duration: 0.45 }}
           >
             <h2 className="text-2xl md:text-3xl font-bold mb-2">
-              <HeadingHover>Gambozo’s Storytelling — A Saga Within the Saga</HeadingHover>
+              <HeadingHover>Gambozo’s Storytelling A Saga Within the Saga</HeadingHover>
             </h2>
             <p className="font-medium text-neutral-800 mb-2">
               The fire that carried memory through the hush.
@@ -201,7 +206,7 @@ export default function BooksPage() {
               oral history to life.
             </p>
             <p className="text-neutral-700 leading-relaxed mb-5">
-              It is the heartbeat within the larger Saga—a tapestry of ancestral
+              It is the heartbeat within the larger Saga a tapestry of ancestral
               voices, children’s laughter, and whispered songs that outlived the
               auction block.
             </p>
@@ -221,7 +226,7 @@ export default function BooksPage() {
             className="order-2 md:order-1"
           >
             <h2 className="text-2xl md:text-3xl font-bold mb-2">
-              <HeadingHover>Diaspora Scavenger — Letters, Ledgers &amp; Ghost Routes</HeadingHover>
+              <HeadingHover>Diaspora Scavenger Letters, Ledgers &amp; Ghost Routes</HeadingHover>
             </h2>
             <p className="font-medium text-neutral-800 mb-2">
               Mapping the unseen threads of the trade{" "}
@@ -232,7 +237,7 @@ export default function BooksPage() {
             <p className="text-neutral-700 leading-relaxed mb-3">
               Part investigative history, part act of re-memory, <em>Diaspora
               Scavenger</em> uncovers the paper trail of the transatlantic slave
-              trade—ships, merchants, and families entangled in its wake.
+              trade ships, merchants, and families entangled in its wake.
             </p>
             <p className="text-neutral-700 leading-relaxed mb-5">
               It turns ledgers into testimony and archives into living maps of
@@ -289,7 +294,7 @@ export default function BooksPage() {
 
               {/* Body */}
               <p className="text-white/90">
-                Amadu Massally is a cultural bridge-builder and storyteller whose work reconnects Sierra Leone and the Gullah Geechee Corridor through memory, scholarship, and lived experience. His trilogy transforms history into testimony—inviting readers, educators, and descendants to join in the work of repair.
+                Amadu Massally is a cultural bridge-builder and storyteller whose work reconnects Sierra Leone and the Gullah Geechee Corridor through memory, scholarship, and lived experience. His trilogy transforms history into testimony inviting readers, educators, and descendants to join in the work of repair.
               </p>
 
               {/* CTA */}
@@ -345,8 +350,8 @@ export default function BooksPage() {
               <HeadingHover>Three Books. One Living Covenant.</HeadingHover>
             </h3>
             <p className="mt-3 text-white/90">
-              Together, these works form a single arc of remembrance—carrying the story full circle from Africa to the Americas and back again.
-              They are not just books, but portals—living witnesses that call us to remember, re-root, and rebuild.
+              Together, these works form a single arc of remembrance carrying the story full circle from Africa to the Americas and back again.
+              They are not just books, but portals living witnesses that call us to remember, re-root, and rebuild.
             </p>
           </div>
 

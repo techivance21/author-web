@@ -45,7 +45,7 @@ export default function Narrative() {
             img="/book1.png"
             title="The Gullah Geechee Saga"
             subtitle="Through African Eyes"
-            rating={5}
+            rating={0}
           />
           <BookCard
             img="/book2.png"

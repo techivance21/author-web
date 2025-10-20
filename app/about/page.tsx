@@ -119,7 +119,7 @@ const books: Book[] = [
     title: "Gullah Geechee Saga",
     img: "/book1.png",
     href: "/books",
-    rating: 5,
+    comingSoon: true,
     description:
       "A sweeping chronicle tracing ancestral lines, sacred rituals, and unbroken love between Sierra Leone and the Sea Islands.",
   },
@@ -270,7 +270,7 @@ export default function AboutPage() {
               className="relative h-64 w-64 overflow-hidden rounded-3xl shadow-2xl ring-4 ring-[#0A2342]/10"
             >
               <Image
-                src="/author2.png"
+                src="/home-image.jpg"
                 alt="Portrait of Amadu Massally"
                 fill
                 className="object-cover"
@@ -411,7 +411,7 @@ export default function AboutPage() {
                 className="flex h-full flex-col overflow-hidden rounded-3xl border border-black/[0.05] bg-white shadow-sm"
               >
                 <div className="relative aspect-[4/5] w-full">
-                  <Image src={book.img} alt={book.title} fill className="object-cover" />
+                  <Image src={book.img} alt={book.title} fill />
                 </div>
                 <div className="flex flex-col gap-3 p-6">
                   <h4 className="text-xl font-semibold text-black">{book.title}</h4>
