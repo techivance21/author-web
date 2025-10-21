@@ -94,10 +94,6 @@ export default function Event() {
 
               {/* CTA row */}
               <div className="flex flex-col gap-3 sm:flex-row sm:items-center sm:justify-between">
-                <PrimaryButton as="link" href="/blogs" size="sm">
-                  Read About the Movement
-                </PrimaryButton>
-
                 <p className="text-sm text-white/65 sm:max-w-[16rem]">
                   Gatherings, resources, and shared study to support every return.
                 </p>
