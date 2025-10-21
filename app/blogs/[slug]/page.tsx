@@ -95,6 +95,7 @@ export default async function BlogPostPage({ params }: Props) {
 
   const heroImage = resolveImagePath(post.image);
   const inlineImage = resolveImagePath(post.contentImage);
+  const imageCaption = post.imageCaption;
   const contentBlocks = buildContentBlocks(post.content);
   const firstParagraphIndex = contentBlocks.findIndex(
     (block) => block.type === "paragraph",
@@ -157,17 +158,24 @@ export default async function BlogPostPage({ params }: Props) {
       {inlineImage ? (
         <section className="bg-slate-50">
           <div className="mx-auto w-full max-w-4xl px-4 pb-8 pt-10 sm:px-6 md:pb-12 lg:px-8">
-            <div className="relative aspect-[4/3] overflow-hidden rounded-3xl shadow-[0_25px_55px_-35px_rgba(15,23,42,0.45)] sm:aspect-[16/10] lg:aspect-[16/9]">
-              <Image
-                src={inlineImage}
-                alt={post.title}
-                fill
-                quality={98}
-                sizes="(min-width: 1024px) 768px, (min-width: 640px) 80vw, 92vw"
-                className="object-cover"
-                priority={false}
-              />
-            </div>
+            <figure className="flex flex-col items-center text-center">
+              <div className="relative aspect-[4/3] w-full overflow-hidden rounded-3xl shadow-[0_25px_55px_-35px_rgba(15,23,42,0.45)] sm:aspect-[16/10] lg:aspect-[16/9]">
+                <Image
+                  src={inlineImage}
+                  alt={post.title}
+                  fill
+                  quality={98}
+                  sizes="(min-width: 1024px) 768px, (min-width: 640px) 80vw, 92vw"
+                  className="object-cover"
+                  priority={false}
+                />
+              </div>
+              {imageCaption ? (
+                <figcaption className="mt-5 max-w-3xl text-sm leading-relaxed text-slate-600 sm:text-base">
+                  {imageCaption}
+                </figcaption>
+              ) : null}
+            </figure>
           </div>
         </section>
       ) : null}
