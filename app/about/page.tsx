@@ -126,7 +126,7 @@ const books: Book[] = [
   {
     title: "Gambozo's Storytelling",
     img: "/book2.png",
-    href: "/books",
+    href: "https://www.amazon.com/Gambozos-Storytelling-Through-Diaspora-Scavengers/dp/B0FP357D39",
     rating: 5,
     description:
       "An intimate portrait of the griots, song keepers, and farmers who steward Gullah Geechee language across generations.",
