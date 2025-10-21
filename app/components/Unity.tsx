@@ -60,7 +60,7 @@ export default function Unity() {
   const slide = slides[index];
 
   return (
-    <section className="relative w-full h-[85vh] overflow-hidden font-sans">
+    <section className="relative w-full overflow-hidden font-sans">
       {/* Background Images with Fade Transition */}
       <AnimatePresence mode="wait">
         <motion.div
@@ -84,7 +84,7 @@ export default function Unity() {
       </AnimatePresence>
 
       {/* Slide Content */}
-      <div className="relative z-10 flex items-center h-full px-6 md:px-20">
+      <div className="relative z-10 flex items-center min-h-[70vh] px-6 md:px-20 py-12 md:py-20">
         <AnimatePresence mode="wait">
           <motion.div
             key={slide.title}

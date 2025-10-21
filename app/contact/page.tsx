@@ -80,10 +80,60 @@ function FieldArea({
 
 export default function ContactPage() {
   const [sending, setSending] = useState(false);
-  const onSubmit = (e: FormEvent<HTMLFormElement>) => {
+  const [feedback, setFeedback] = useState<
+    { type: "success" | "error"; message: string } | null
+  >(null);
+
+  const onSubmit = async (e: FormEvent<HTMLFormElement>) => {
     e.preventDefault();
+
     setSending(true);
-    setTimeout(() => setSending(false), 1200);
+    setFeedback(null);
+
+    const form = e.currentTarget;
+    const formData = new FormData(form);
+
+    const payload = {
+      firstName: formData.get("firstName")?.toString().trim() ?? "",
+      lastName: formData.get("lastName")?.toString().trim() ?? "",
+      email: formData.get("email")?.toString().trim() ?? "",
+      phone: formData.get("phone")?.toString().trim() ?? "",
+      subject: formData.get("subject")?.toString().trim() ?? "",
+      message: formData.get("message")?.toString().trim() ?? "",
+    };
+
+    try {
+      const response = await fetch("/api/contact", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(payload),
+      });
+
+      const result = (await response.json()) as {
+        success?: boolean;
+        error?: string;
+      };
+
+      if (!response.ok || !result.success) {
+        const errorMessage =
+          result?.error ?? "We could not send your message just now.";
+        throw new Error(errorMessage);
+      }
+
+      form.reset();
+      setFeedback({
+        type: "success",
+        message: "Thank you! Your message is on its way.",
+      });
+    } catch (error) {
+      const message =
+        error instanceof Error
+          ? error.message
+          : "Something went wrong. Please try again.";
+      setFeedback({ type: "error", message });
+    } finally {
+      setSending(false);
+    }
   };
 
   /* ---- animated stars/glows for the Share Your Voice section ---- */
@@ -280,6 +330,18 @@ export default function ContactPage() {
                       {sending ? "Sending…" : "Submit"}
                       <Send size={16} />
                     </button>
+                    {feedback && (
+                      <p
+                        role="status"
+                        className={`mt-3 text-sm ${
+                          feedback.type === "success"
+                            ? "text-green-600"
+                            : "text-red-600"
+                        }`}
+                      >
+                        {feedback.message}
+                      </p>
+                    )}
                   </div>
                 </form>
               </div>
@@ -293,3 +355,4 @@ export default function ContactPage() {
     </main>
   );
 }
+
