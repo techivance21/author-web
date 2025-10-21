@@ -41,7 +41,7 @@ export default function Footer() {
     {
       icon: <Mail size={18} aria-hidden />,
       text: "Connect via Email",
-      href: "amadu.massally@gmail.com",
+      href: "mailto:amadu.massally@gmail.com",
     },
     {
       icon: <Facebook size={18} aria-hidden />,
@@ -228,6 +228,7 @@ function FooterLink({
   href?: string;
   external?: boolean;
 }) {
+  const safeHref = href ?? "#";
   const base =
     "flex items-center gap-2 text-black transition-colors duration-200 hover:text-[#0a1a4f] focus:outline-none focus-visible:ring-2 focus-visible:ring-[#0a1a4f]/30 rounded";
   const content = (
@@ -237,12 +238,14 @@ function FooterLink({
     </>
   );
 
-  if (external) {
+  const isDirect = safeHref.startsWith("mailto:") || safeHref.startsWith("tel:");
+
+  if (external || isDirect) {
     return (
       <a
-        href={href}
-        target="_blank"
-        rel="noopener noreferrer"
+        href={safeHref}
+        target={external ? "_blank" : undefined}
+        rel={external ? "noopener noreferrer" : undefined}
         className={base}
         aria-label={text}
       >
@@ -252,7 +255,7 @@ function FooterLink({
   }
 
   return (
-    <Link href={href} className={base} aria-label={text}>
+    <Link href={safeHref} className={base} aria-label={text}>
       {content}
     </Link>
   );

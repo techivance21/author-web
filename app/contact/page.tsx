@@ -259,15 +259,21 @@ export default function ContactPage() {
 
             {/* Stacked contact details */}
             <div className="space-y-4 pt-2">
-              <div className="flex items-center gap-3">
-                <div className="h-9 w-9 rounded-full bg-white/15 grid place-items-center">
+              <a
+                href="mailto:amadu.massally@gmail.com"
+                className="flex items-center gap-3 group transition-colors"
+                aria-label="Email amadu.massally@gmail.com"
+              >
+                <span className="h-9 w-9 rounded-full bg-white/15 grid place-items-center group-hover:bg-white/25 transition-colors">
                   <Mail size={18} color="#FFFFFF" />
-                </div>
-                <div className="text-sm">
-                  <p className="font-medium text-white">Email</p>
-                  <p className="text-white/85">amadu.massally@gmail.com</p>
-                </div>
-              </div>
+                </span>
+                <span className="text-sm">
+                  <span className="block font-medium text-white">Email</span>
+                  <span className="block text-white/85 group-hover:text-white">
+                    amadu.massally@gmail.com
+                  </span>
+                </span>
+              </a>
               <div className="flex items-center gap-3">
                 <div className="h-9 w-9 rounded-full bg-white/15 grid place-items-center">
                   <Phone size={18} color="#FFFFFF" />
