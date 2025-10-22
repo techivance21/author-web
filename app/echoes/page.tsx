@@ -181,16 +181,7 @@ export default function EchoesPage() {
                   </p>
                 </div>
               </div>
-
-              <div className="flex md:justify-end">
-                <div className="h-fit rounded-2xl border border-white/20 bg-white/40 backdrop-blur-md px-4 py-3 text-sm text-black/80">
-                  <Pill>Photographic Notes</Pill>
-                  <div className="mt-3 leading-relaxed">
-                    Glass-morphic cards • soft hover • gentle entrance • mobile-first grid
-                  </div>
-                </div>
-              </div>
-            </div>
+           </div>
           </div>
         </div>
       </section>

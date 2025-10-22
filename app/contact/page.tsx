@@ -270,7 +270,7 @@ export default function ContactPage() {
                 <span className="text-sm">
                   <span className="block font-medium text-white">Email</span>
                   <span className="block text-white/85 group-hover:text-white">
-                    amadu.massally@gmail.com
+                    amadu.massally@fambultik.com
                   </span>
                 </span>
               </a>

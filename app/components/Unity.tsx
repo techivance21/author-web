@@ -40,10 +40,7 @@ const slides: Array<TextSlide | QuoteSlide> = [
       "“This trilogy restores what the archives forgot.”",
       "“Every chapter feels like a homecoming.”",
     ],
-    ctas: [
-      { label: "Read More Reviews", href: "/events" },
-      { label: "Share Your Reflection", href: "/contact" },
-    ],
+    ctas: [{ label: "Share Your Reflection", href: "/contact" }],
   },
 ];
 
