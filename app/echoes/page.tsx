@@ -114,6 +114,24 @@ const ECHOES: Readonly<EchoCard[]> = [
   },
 ];
 
+const COVENANT_SECTIONS: ReadonlyArray<{ title: string; body: string }> = [
+  {
+    title: "The Vow",
+    body:
+      "I vow to tell the truth of the taken, to name people where I can, and never use words that strip them of humanity. I will learn, listen, and lift. I will honor the hush when sacred things ask for quiet.",
+  },
+  {
+    title: "The Commitment",
+    body:
+      "We enter this work as keepers, not owners. We commit to truthful naming, to cite and credit, and to refuse extractive storytelling. We will consult descendant communities, protect sacred knowledge, and respect permissions for images and sites. We will use our platforms to lift education and preservation. We will use language that restores dignity speaking of enslaved Africans, not erasing terms.",
+  },
+  {
+    title: "The Promise",
+    body:
+      "We will teach this history as continuity, not ruin skills that crossed water, songs that held breath, prayers that built praise houses. We will return what we can: correct the record, share resources, honor permission, and sustain the places that hold memory. We will measure repair in relationships between Sierra Leone and the Lowcountry,",
+  },
+];
+
 /* ---------------------------------
    Motion Variants
 ---------------------------------- */
@@ -260,6 +278,47 @@ export default function EchoesPage() {
                 Show less
               </Link>
             )}
+          </div>
+        </div>
+      </section>
+
+      {/* ---------- COVENANT SECTION ---------- */}
+      <section className="relative py-20 md:py-28 overflow-hidden">
+        <div className="absolute inset-0 -z-10">
+          <div className="absolute inset-0 bg-gradient-to-b from-[#0A2342]/18 via-white to-white" />
+          <div className="absolute -top-24 left-1/5 h-48 w-48 rounded-full bg-[#0A2342]/12 blur-3xl" />
+          <div className="absolute bottom-0 right-1/4 h-60 w-60 rounded-full bg-[#0A2342]/10 blur-3xl" />
+        </div>
+
+        <div className="relative max-w-6xl mx-auto px-6">
+          <div className="relative overflow-hidden rounded-3xl border border-white/30 bg-white/85 p-8 md:p-12 shadow-[0_24px_65px_rgba(10,35,66,0.18)] backdrop-blur-xl">
+            <div className="absolute inset-0 opacity-50">
+              <div className="absolute -top-24 left-10 h-56 w-56 rounded-full bg-[#0A2342]/10 blur-3xl" />
+              <div className="absolute bottom-[-50px] right-16 h-48 w-48 rounded-full bg-[#0A2342]/12 blur-3xl" />
+            </div>
+            <div className="relative">
+              <Pill>Re-rooted Remembered Reassembled</Pill>
+              <h2 className="mt-5 text-3xl font-semibold text-[#0A2342] md:text-5xl">
+                <HeadingHover>The Covenant of Return</HeadingHover>
+              </h2>
+            </div>
+          </div>
+
+          <div className="mt-12 grid gap-6 lg:gap-8 md:grid-cols-3">
+            {COVENANT_SECTIONS.map((entry) => (
+              <article
+                key={entry.title}
+                className="relative overflow-hidden rounded-3xl border border-white/35 bg-white/80 p-6 shadow-[0_18px_45px_rgba(10,35,66,0.14)] backdrop-blur-lg"
+              >
+                <div className="absolute inset-0 pointer-events-none bg-gradient-to-b from-white/80 via-transparent to-white/90" />
+                <div className="relative">
+                  <h3 className="text-lg font-semibold text-[#0A2342]">
+                    <HeadingHover>{entry.title}</HeadingHover>
+                  </h3>
+                  <p className="mt-4 text-sm leading-relaxed text-neutral-800">{entry.body}</p>
+                </div>
+              </article>
+            ))}
           </div>
         </div>
       </section>
