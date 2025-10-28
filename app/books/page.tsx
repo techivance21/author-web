@@ -316,11 +316,11 @@ export default function BooksPage() {
 
           {/* Who is this book for? */}
           <div>
-            <h2 className="text-2xl md:text-3xl font-bold text-white mb-6">
+            <h2 className="text-2xl md:text-3xl font-bold text-white mb-6 text-center">
               <HeadingHover>For Everyone Who Believes Memory Still Has Work To Do</HeadingHover>
             </h2>
 
-            <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-5">
+            <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-5 max-w-5xl mx-auto">
               {[
                 "Descendants & Heritage Seekers",
                 "Educators & Cultural Scholars",
@@ -339,8 +339,8 @@ export default function BooksPage() {
             </div>
 
             {/* Supporting line */}
-            <p className="mt-4 text-white/90">
-              Each book speaks to a different part of the diaspora journey—from rupture to reassembly, from hush to rhythm.
+            <p className="mt-4 text-white/90 text-center">
+              Each book speaks to a different part of the diaspora journey from rupture to reassembly, from hush to rhythm.
             </p>
           </div>
 
