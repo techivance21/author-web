@@ -112,7 +112,7 @@ export default function EventsPage() {
         className="space-y-4"
       >
         <h2 className="text-2xl md:text-3xl font-bold">
-          <HeadingHover>Invite the Author — Share the Story</HeadingHover>
+          <HeadingHover>Invite the Author Share the Story</HeadingHover>
         </h2>
         <p className="text-neutral-700">
           Keynotes, storytelling, panels, and educator workshops—both in-person and virtual.
@@ -134,12 +134,10 @@ export default function EventsPage() {
         className="order-2 md:order-1 space-y-4"
       >
         <h2 className="text-2xl md:text-3xl font-bold">
-          <HeadingHover>Heritage Journeys</HeadingHover>
+          <HeadingHover>Black Loyalists to Sierra Leone</HeadingHover>
         </h2>
         <p className="text-neutral-700">
-          These are not tours. They are returns. From Sierra Leone to the Sea Islands, journey
-          to sacred sites where memory was planted and culture refused to die. Walk praise-house
-          paths, hear ring-shout history, and meet living tradition bearers along the corridor.
+          Nearly 1,200 Black Loyalists left Nova Scotia for Sierra Leone in 1792 under John Clarkson, whose journals and letterbooks record the recruiting, musters, and embarkation lists
         </p>
         <CtaButton>Plan a Journey</CtaButton>
       </motion.div>
@@ -150,7 +148,7 @@ export default function EventsPage() {
         transition={{ duration: 0.5 }}
         className="order-1 md:order-2 relative aspect-[4/3] rounded-2xl overflow-hidden shadow-[0_8px_30px_rgba(0,0,0,0.08)]"
       >
-        <Image src="/event1.png" alt="Heritage Journeys" fill className="object-cover" />
+        <Image src="/event11.jpg" alt="Heritage Journeys" fill className="object-cover" />
       </motion.div>
     </div>
 
@@ -163,7 +161,7 @@ export default function EventsPage() {
         transition={{ duration: 0.5 }}
         className="relative aspect-[4/3] rounded-2xl overflow-hidden shadow-[0_8px_30px_rgba(0,0,0,0.08)]"
       >
-        <Image src="/blog3.png" alt="Community Sessions" fill className="object-cover" />
+        <Image src="/event.jpg" alt="Community Sessions" fill />
       </motion.div>
       <motion.div
         initial={{ opacity: 0, x: 20 }}
@@ -173,11 +171,10 @@ export default function EventsPage() {
         className="space-y-4"
       >
         <h2 className="text-2xl md:text-3xl font-bold">
-          <HeadingHover>Community Sessions &amp; Story Circles</HeadingHover>
+          <HeadingHover>Tracing Sierra Leone Voyages</HeadingHover>
         </h2>
         <p className="text-neutral-700">
-          Guided conversations that braid testimony, language, and song. Perfect for libraries,
-          museums, festivals, and faith spaces seeking participatory learning grounded in care.
+          Antigua & Barbuda National Archives Amadu tracing descendants and uncovering clues of voyages departing Sierra Leone.
         </p>
         <CtaButton>Start a Conversation</CtaButton>
       </motion.div>
